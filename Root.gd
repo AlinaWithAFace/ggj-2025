@@ -4,12 +4,14 @@ extends Node2D
 @export var distance: float = 0
 @export var accel: float = 0
 @export var backdrop: Sprite2D = null
-
+@export var gameover: Sprite2D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	speed = 0;
 	distance = 0;
+	gameover.hide()
+	
 	 # Replace with function body.
 
 
@@ -25,3 +27,10 @@ func _process(delta: float) -> void:
 	pos.y = spriteY
 	
 	backdrop.region_rect.position = pos;
+
+
+func _on_bubble_popped() -> void:
+	speed = 0
+	accel = 0
+	gameover.show()
+	pass # Replace with function body.

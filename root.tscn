@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds34jynxuonpu"]
+[gd_scene load_steps=7 format=3 uid="uid://ds34jynxuonpu"]
 
 [ext_resource type="Script" path="res://Root.gd" id="1_mqs1h"]
 [ext_resource type="Texture2D" uid="uid://dbis3tuj2nb0e" path="res://elizabeth/Gradient1.png" id="2_nlul5"]
 [ext_resource type="Script" path="res://Backdrop/Backdrop.gd" id="3_rdumw"]
 [ext_resource type="PackedScene" uid="uid://cdvoaeft5jym6" path="res://bubble/bubble-node-2d.tscn" id="4_q86o0"]
+[ext_resource type="Texture2D" uid="uid://hiwe8cvn0x03" path="res://gameover.png" id="6_g1wva"]
 [ext_resource type="PackedScene" uid="uid://db3v7nkf80qxn" path="res://obstacles/spike_ball.tscn" id="6_sfqoe"]
 
-[node name="Root" type="Node2D" node_paths=PackedStringArray("backdrop")]
+[node name="Root" type="Node2D" node_paths=PackedStringArray("backdrop", "gameover")]
 script = ExtResource("1_mqs1h")
 accel = 10.0
 backdrop = NodePath("Backdrop")
+gameover = NodePath("Gameover")
 
 [node name="Backdrop" type="Sprite2D" parent="."]
 position = Vector2(-621, -207)
@@ -24,7 +26,7 @@ script = ExtResource("3_rdumw")
 position = Vector2(-560, -328)
 
 [node name="Obstacle" parent="." instance=ExtResource("6_sfqoe")]
-position = Vector2(-775, -398)
+position = Vector2(-754, -437)
 
 [node name="Obstacle2" parent="." instance=ExtResource("6_sfqoe")]
 position = Vector2(-911, -292)
@@ -40,3 +42,11 @@ position = Vector2(-388, -68)
 
 [node name="Bubble" parent="." instance=ExtResource("4_q86o0")]
 position = Vector2(-634, -380)
+
+[node name="Gameover" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-550, -351)
+scale = Vector2(4.16, 2.12)
+texture = ExtResource("6_g1wva")
+
+[connection signal="popped" from="Bubble" to="." method="_on_bubble_popped"]
