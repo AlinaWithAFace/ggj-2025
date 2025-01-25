@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 class_name Bubble
 
@@ -60,6 +60,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_released("deflate_bubble"):
 		_stop_deflate_bubble()
 		
+	if Input.is_action_just_pressed("move_right"):
+		wave(Vector2(2000, 0))
+	if Input.is_action_just_pressed("move_left"):
+		wave(Vector2(-2000, 0))
+		
 	time+=delta* 2;
 	var sine_val:Vector2 = Vector2(sin(time), 0)
 	
@@ -67,9 +72,9 @@ func _process(delta: float) -> void:
 	
 	scale = Vector2(curr_scale, curr_scale)
 	
-	var collision = move_and_collide(sine_val)
-	if collision:
-		pop()
+	#var collision = move_and_collide(sine_val)
+	#if collision:
+	#	pop()
 	
 	pass
 
@@ -101,6 +106,11 @@ func _stop_deflate_bubble():
 func pop():
 	started = false
 	popped.emit()
+	
+func wave(direction : Vector2):
+	apply_force(direction)
+	print("hello")
+	pass
 	
 	
 	
