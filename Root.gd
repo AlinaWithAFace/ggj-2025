@@ -16,7 +16,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	var spriteY = 400 - distance;
+	var spriteY = 1000 - distance;
 	speed += accel * delta
 	distance += speed * delta
 	print(distance)
