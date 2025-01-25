@@ -10,7 +10,7 @@ class_name Root
 @export var bubble: Bubble = null
 @export var start_button: TextureButton = null
 @export var score_label: Label = null
-
+@export var speed_scale: float = 5
 var started = false
 
 
@@ -30,7 +30,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if(started):
 		var spriteY = 1000 - distance;
-		speed = bubble.size * bubble.size;
+		var sz = bubble.size;
+		sz +=1
+		
+		speed = sz * sz;
 		distance += speed * delta
 		
 		var pos = backdrop.region_rect.position;
