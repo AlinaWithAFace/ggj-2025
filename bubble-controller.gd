@@ -1,10 +1,13 @@
-extends Node
+extends CharacterBody2D
 
 @export var audio: AudioStream = null
 
 @export var bubble_scale : Vector2 = Vector2(0,0)
 
 @export var bubble_body : Node2D = null
+
+signal popped
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,5 +54,10 @@ func _stop_deflate_bubble():
 	print("deflate bubble")
 #	audio.free()
 	pass
+	
+func pop():
+	popped.emit()
+	
+	
 	
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdvoaeft5jym6"]
+[gd_scene load_steps=8 format=3 uid="uid://cdvoaeft5jym6"]
 
 [ext_resource type="Texture2D" uid="uid://bux8tqnrgp8ip" path="res://bubble/bubble-image.png" id="1_6rwhg"]
 [ext_resource type="Script" path="res://bubble-controller.gd" id="1_xkymh"]
@@ -42,10 +42,13 @@ _data = {
 "idle_float": SubResource("Animation_0ja7v")
 }
 
-[node name="Bubble" type="Node2D" node_paths=PackedStringArray("bubble_body")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_y00x3"]
+radius = 122.037
+
+[node name="Bubble" type="CharacterBody2D" node_paths=PackedStringArray("bubble_body")]
 script = ExtResource("1_xkymh")
 audio = ExtResource("2_6eups")
-bubble_body = NodePath(".")
+bubble_body = NodePath("BubbleBody")
 
 [node name="BubbleBody" type="Sprite2D" parent="."]
 texture = ExtResource("1_6rwhg")
@@ -55,3 +58,7 @@ libraries = {
 "": SubResource("AnimationLibrary_c42dt")
 }
 autoplay = "idle_float"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 2)
+shape = SubResource("CircleShape2D_y00x3")
