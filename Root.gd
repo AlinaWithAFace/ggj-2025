@@ -6,7 +6,7 @@ class_name Root
 @export var distance: float = 0
 @export var accel: float = 0
 @export var backdrop: Sprite2D = null
-@export var gameover: Sprite2D = null
+
 @export var bubble: Bubble = null
 @export var start_button: TextureButton = null
 @export var score_label: Label = null
@@ -20,7 +20,6 @@ var started = false
 func _ready() -> void:
 	speed = 0;
 	distance = 0;
-	gameover.hide()
 	
 	bubble.hide()
 	start_button.show()
@@ -49,7 +48,7 @@ func _on_bubble_popped() -> void:
 	if(started):
 		speed = 0
 		accel = 0
-		#gameover.show()
+		
 		bubble.hide()
 		start_button.show()
 		started = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ds34jynxuonpu"]
+[gd_scene load_steps=14 format=3 uid="uid://ds34jynxuonpu"]
 
 [ext_resource type="Script" path="res://Root.gd" id="1_mqs1h"]
 [ext_resource type="Texture2D" uid="uid://dbis3tuj2nb0e" path="res://elizabeth/Gradient1.png" id="2_nlul5"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://dhwnbdbovt8wu" path="res://font/04B_30__.TTF" id="9_l66tg"]
 [ext_resource type="LabelSettings" uid="uid://djwfsgmakgith" path="res://label-settings.tres" id="9_qk2ah"]
 [ext_resource type="AudioStream" uid="uid://ce5d4ttk65wyd" path="res://audio/mx_water_hell_loopable.ogg" id="11_q28vb"]
+[ext_resource type="Script" path="res://end_menu.gd" id="12_41rad"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tut2x"]
 font = ExtResource("9_l66tg")
@@ -26,55 +27,28 @@ score_label = NodePath("Label")
 main_menu_node = NodePath("MainMenu")
 
 [node name="Backdrop" type="Sprite2D" parent="."]
-position = Vector2(-170.606, -517.698)
+position = Vector2(188, 171)
 rotation = 3.14159
-scale = Vector2(62.8422, -34.2787)
+scale = Vector2(62.8422, -38.8728)
 texture = ExtResource("2_nlul5")
 region_enabled = true
 region_rect = Rect2(4.718, 1000, 66.031, 101.462)
 script = ExtResource("3_rdumw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-560, -328)
+anchor_mode = 0
 
 [node name="Bubble" parent="." instance=ExtResource("4_q86o0")]
-position = Vector2(-634, -380)
+position = Vector2(236, 728)
 
 [node name="ObstacleManager" parent="." instance=ExtResource("6_q0rfm")]
-position = Vector2(-533, -552)
-
-[node name="MainMenu" type="Node2D" parent="."]
-
-[node name="Blur" type="Sprite2D" parent="MainMenu"]
-position = Vector2(-541, -468)
-scale = Vector2(3.35, 3.19536)
-texture = ExtResource("7_8fm6k")
-
-[node name="StartButton" type="TextureButton" parent="MainMenu"]
-offset_left = -760.0
-offset_top = -845.0
-offset_right = -704.0
-offset_bottom = -786.0
-scale = Vector2(5.24448, 5.24448)
-texture_normal = ExtResource("6_v76gy")
-texture_pressed = ExtResource("8_w3kwx")
-ignore_texture_size = true
-
-[node name="Label2" type="Label" parent="MainMenu/StartButton"]
-layout_mode = 0
-offset_left = 2.66947
-offset_top = 18.305
-offset_right = 303.669
-offset_bottom = 106.305
-scale = Vector2(0.149168, 0.149168)
-text = "START"
-label_settings = ExtResource("9_qk2ah")
+position = Vector2(237, 161)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -929.0
-offset_top = -1153.0
-offset_right = -519.0
-offset_bottom = -1065.0
+offset_left = 41.0
+offset_top = 32.0
+offset_right = 451.0
+offset_bottom = 120.0
 text = "Score: 0"
 label_settings = SubResource("LabelSettings_tut2x")
 
@@ -82,9 +56,40 @@ label_settings = SubResource("LabelSettings_tut2x")
 stream = ExtResource("11_q28vb")
 autoplay = true
 
+[node name="MainMenu" type="Node2D" parent="."]
+
+[node name="Blur" type="Sprite2D" parent="MainMenu"]
+position = Vector2(298, 639)
+scale = Vector2(1.70208, 1.82592)
+texture = ExtResource("7_8fm6k")
+
+[node name="StartButton" type="TextureButton" parent="MainMenu"]
+offset_left = 106.0
+offset_top = 272.0
+offset_right = 162.0
+offset_bottom = 331.0
+scale = Vector2(5.24448, 5.24448)
+texture_normal = ExtResource("6_v76gy")
+texture_pressed = ExtResource("8_w3kwx")
+ignore_texture_size = true
+
+[node name="Label2" type="Label" parent="MainMenu/StartButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.802
+anchor_bottom = 0.77
+offset_left = -0.57203
+offset_top = 18.1143
+offset_right = 255.516
+offset_bottom = 37.6843
+scale = Vector2(0.149168, 0.149168)
+text = "START"
+label_settings = ExtResource("9_qk2ah")
+
 [node name="EndMenu" type="Node2D" parent="."]
 visible = false
 position = Vector2(-786, -422)
+script = ExtResource("12_41rad")
 
 [node name="Label" type="Label" parent="EndMenu"]
 offset_right = 40.0
@@ -93,4 +98,5 @@ text = "You died!"
 label_settings = ExtResource("9_qk2ah")
 
 [connection signal="popped" from="Bubble" to="." method="_on_bubble_popped"]
+[connection signal="popped" from="Bubble" to="EndMenu" method="_on_bubble_popped"]
 [connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_texture_button_pressed"]
