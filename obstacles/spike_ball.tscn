@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4ixhfbnx1f6s"]
+[gd_scene load_steps=4 format=3 uid="uid://db3v7nkf80qxn"]
 
 [ext_resource type="Script" path="res://obstacles/obstacle.gd" id="1_re7f3"]
 [ext_resource type="Texture2D" uid="uid://dpy8rw2sgilmt" path="res://obstacles/obstacle_sprites/Spike_ball3.webp" id="2_60d8n"]

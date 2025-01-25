@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds34jynxuonpu"]
+[gd_scene load_steps=6 format=3 uid="uid://ds34jynxuonpu"]
 
 [ext_resource type="Script" path="res://Root.gd" id="1_mqs1h"]
 [ext_resource type="Script" path="res://Backdrop/Backdrop.gd" id="3_rdumw"]
 [ext_resource type="Texture2D" uid="uid://bcpt6jablts6q" path="res://Backdrop/test-backdrop-gradient.png" id="3_vsgtc"]
-[ext_resource type="PackedScene" uid="uid://ca0m8u7o3bfl8" path="res://obstacles/obstacle.tscn" id="4_j33qk"]
+[ext_resource type="PackedScene" uid="uid://cdvoaeft5jym6" path="res://bubble/bubble-node-2d.tscn" id="4_q86o0"]
+[ext_resource type="PackedScene" uid="uid://db3v7nkf80qxn" path="res://obstacles/spike_ball.tscn" id="6_sfqoe"]
 
 [node name="Root" type="Node2D" node_paths=PackedStringArray("backdrop")]
 script = ExtResource("1_mqs1h")
@@ -19,17 +20,23 @@ region_enabled = true
 region_rect = Rect2(4.718, 500, 66.031, 101.462)
 script = ExtResource("3_rdumw")
 
+[node name="Node2D" parent="." instance=ExtResource("4_q86o0")]
+position = Vector2(-718, -459)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-560, -328)
 
-[node name="Obstacle" parent="." instance=ExtResource("4_j33qk")]
-position = Vector2(-619, -486)
+[node name="Obstacle" parent="." instance=ExtResource("6_sfqoe")]
+position = Vector2(-775, -398)
 
-[node name="Obstacle2" parent="." instance=ExtResource("4_j33qk")]
-position = Vector2(-431, -397)
+[node name="Obstacle2" parent="." instance=ExtResource("6_sfqoe")]
+position = Vector2(-911, -292)
 
-[node name="Obstacle3" parent="." instance=ExtResource("4_j33qk")]
-position = Vector2(-286, -499)
+[node name="Obstacle3" parent="." instance=ExtResource("6_sfqoe")]
+position = Vector2(-392, -464)
 
-[node name="Obstacle4" parent="." instance=ExtResource("4_j33qk")]
-position = Vector2(-910, -377)
+[node name="Obstacle4" parent="." instance=ExtResource("6_sfqoe")]
+position = Vector2(-255, -290)
+
+[node name="Obstacle5" parent="." instance=ExtResource("6_sfqoe")]
+position = Vector2(-388, -68)

@@ -42,7 +42,7 @@ _data = {
 "idle_float": SubResource("Animation_0ja7v")
 }
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("bubble_body")]
+[node name="Bubble" type="Node2D" node_paths=PackedStringArray("bubble_body")]
 position = Vector2(0, 1)
 script = ExtResource("1_xkymh")
 audio = ExtResource("2_6eups")
