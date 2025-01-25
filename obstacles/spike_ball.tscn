@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://db3v7nkf80qxn"]
+[gd_scene load_steps=4 format=3 uid="uid://b4ixhfbnx1f6s"]
 
 [ext_resource type="Script" path="res://obstacles/obstacle.gd" id="1_re7f3"]
 [ext_resource type="Texture2D" uid="uid://dpy8rw2sgilmt" path="res://obstacles/obstacle_sprites/Spike_ball3.webp" id="2_60d8n"]
@@ -8,16 +8,13 @@
 [node name="SpikeBall" type="Node2D"]
 script = ExtResource("1_re7f3")
 
-[node name="Spike" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
-contact_monitor = true
-max_contacts_reported = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike"]
-shape = SubResource("CircleShape2D_80vsu")
-
-[node name="SpikeBall3" type="Sprite2D" parent="Spike"]
+[node name="SpikeBall3" type="Sprite2D" parent="."]
 scale = Vector2(0.025, 0.025)
 texture = ExtResource("2_60d8n")
 
-[connection signal="body_entered" from="Spike" to="." method="_on_rigid_body_2d_body_entered"]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_80vsu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

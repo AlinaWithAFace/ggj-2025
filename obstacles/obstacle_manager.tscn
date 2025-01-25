@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwh1yg2mh8hyj"]
+
+[ext_resource type="Script" path="res://obstacles/obstacle_manager.gd" id="1_jwxed"]
+
+[node name="ObstacleManager" type="Node2D"]
+position = Vector2(583, -42)
+script = ExtResource("1_jwxed")
+width = 500
+max_distance = 1000
+speed = 100
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

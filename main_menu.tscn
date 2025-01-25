@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl72dats3ecgw"]
+
+[ext_resource type="Texture2D" uid="uid://wxup51e2bvpe" path="res://Backdrop/blur.png" id="1_gx8qx"]
+[ext_resource type="Texture2D" uid="uid://cu14wgg5jv0c8" path="res://elizabeth/bubble1.png" id="2_bsykp"]
+[ext_resource type="Texture2D" uid="uid://bleftpg85tlm7" path="res://elizabeth/bubble3.png" id="3_fil2x"]
+[ext_resource type="FontFile" uid="uid://dhwnbdbovt8wu" path="res://font/04B_30__.TTF" id="4_ihm7n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ey8y3"]
+font = ExtResource("4_ihm7n")
+font_size = 64
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Blur" type="Sprite2D" parent="."]
+position = Vector2(-597, -346)
+scale = Vector2(2.225, 1.76934)
+texture = ExtResource("1_gx8qx")
+
+[node name="StartButton" type="TextureButton" parent="."]
+offset_left = -683.0
+offset_top = -769.0
+offset_right = -628.0
+offset_bottom = -714.0
+scale = Vector2(5.24448, 5.24448)
+texture_normal = ExtResource("2_bsykp")
+texture_pressed = ExtResource("3_fil2x")
+ignore_texture_size = true
+
+[node name="Label2" type="Label" parent="StartButton"]
+layout_mode = 0
+offset_left = 2.66947
+offset_top = 18.305
+offset_right = 303.669
+offset_bottom = 106.305
+scale = Vector2(0.149168, 0.149168)
+text = "START"
+label_settings = SubResource("LabelSettings_ey8y3")
