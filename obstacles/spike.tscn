@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://tjsy2vi0qjr7"]
+
+[ext_resource type="Script" path="res://obstacles/obstacle.gd" id="1_e3mig"]
+
+[node name="Obstacle" type="Node2D"]
+scale = Vector2(1.88, 1)
+script = ExtResource("1_e3mig")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+position = Vector2(-40, -1)
+polygon = PackedVector2Array(40, 5, 40, -2, 49, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.929412, 0, 0, 1)
+polygon = PackedVector2Array(0, -3, 9, 0, 0, 4)
+
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
