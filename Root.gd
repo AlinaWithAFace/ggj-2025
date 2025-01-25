@@ -11,11 +11,10 @@ class_name Root
 @export var start_button: TextureButton = null
 @export var score_label: Label = null
 @export var speed_scale: float = 5
-
-@export var music : AudioStream
-
 var started = false
-#var mp :AudioStreamPlayback = null;
+
+@export var main_menu_node : Node2D = null
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,15 +53,14 @@ func _on_bubble_popped() -> void:
 		bubble.hide()
 		start_button.show()
 		started = false
+		
 	
 	pass # Replace with function body.
 
 func _on_texture_button_pressed() -> void:
 	started = true
-	gameover.hide()
-	start_button.hide()
+	main_menu_node.hide()
 	bubble.show()
 	bubble.reset()
-	music.instantiate_playback()
 	distance = 0
 	pass # Replace with function body.
