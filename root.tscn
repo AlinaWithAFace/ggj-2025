@@ -5,11 +5,12 @@
 [ext_resource type="Script" path="res://Backdrop/Backdrop.gd" id="3_rdumw"]
 [ext_resource type="PackedScene" uid="uid://cdvoaeft5jym6" path="res://bubble/bubble-node-2d.tscn" id="4_q86o0"]
 [ext_resource type="Texture2D" uid="uid://hiwe8cvn0x03" path="res://gameover.png" id="6_g1wva"]
-[ext_resource type="PackedScene" uid="uid://db3v7nkf80qxn" path="res://obstacles/spike_ball.tscn" id="6_sfqoe"]
+[ext_resource type="PackedScene" path="res://obstacles/obstacle_manager.tscn" id="6_q0rfm"]
 [ext_resource type="Texture2D" uid="uid://cu14wgg5jv0c8" path="res://elizabeth/bubble1.png" id="6_v76gy"]
 [ext_resource type="Texture2D" uid="uid://wxup51e2bvpe" path="res://Backdrop/blur.png" id="7_8fm6k"]
 [ext_resource type="Texture2D" uid="uid://bleftpg85tlm7" path="res://elizabeth/bubble3.png" id="8_w3kwx"]
 [ext_resource type="FontFile" uid="uid://dhwnbdbovt8wu" path="res://font/04B_30__.TTF" id="9_l66tg"]
+[ext_resource type="AudioStream" uid="uid://ce5d4ttk65wyd" path="res://audio/mx_water_hell_loopable.ogg" id="11_q28vb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ey8y3"]
 font = ExtResource("9_l66tg")
@@ -18,8 +19,6 @@ font_size = 64
 [sub_resource type="LabelSettings" id="LabelSettings_tut2x"]
 font = ExtResource("9_l66tg")
 font_size = 64
-
-[sub_resource type="AudioStream" id="AudioStream_dwk3m"]
 
 [node name="Root" type="Node2D" node_paths=PackedStringArray("backdrop", "gameover", "bubble", "start_button", "score_label", "main_menu_node")]
 script = ExtResource("1_mqs1h")
@@ -32,9 +31,9 @@ score_label = NodePath("Label")
 main_menu_node = NodePath("MainMenu")
 
 [node name="Backdrop" type="Sprite2D" parent="."]
-position = Vector2(-365, -431)
+position = Vector2(-170.606, -517.698)
 rotation = 3.14159
-scale = Vector2(46.5878, -28.9976)
+scale = Vector2(62.8422, -34.2787)
 texture = ExtResource("2_nlul5")
 region_enabled = true
 region_rect = Rect2(4.718, 1000, 66.031, 101.462)
@@ -42,21 +41,6 @@ script = ExtResource("3_rdumw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-560, -328)
-
-[node name="Obstacle" parent="." instance=ExtResource("6_sfqoe")]
-position = Vector2(-754, -437)
-
-[node name="Obstacle2" parent="." instance=ExtResource("6_sfqoe")]
-position = Vector2(-857, -196)
-
-[node name="Obstacle3" parent="." instance=ExtResource("6_sfqoe")]
-position = Vector2(-392, -464)
-
-[node name="Obstacle4" parent="." instance=ExtResource("6_sfqoe")]
-position = Vector2(-255, -290)
-
-[node name="Obstacle5" parent="." instance=ExtResource("6_sfqoe")]
-position = Vector2(-388, -68)
 
 [node name="Bubble" parent="." instance=ExtResource("4_q86o0")]
 position = Vector2(-634, -380)
@@ -67,18 +51,21 @@ position = Vector2(-550, -351)
 scale = Vector2(4.16, 2.12)
 texture = ExtResource("6_g1wva")
 
+[node name="ObstacleManager" parent="." instance=ExtResource("6_q0rfm")]
+position = Vector2(-533, -552)
+
 [node name="MainMenu" type="Node2D" parent="."]
 
 [node name="Blur" type="Sprite2D" parent="MainMenu"]
-position = Vector2(-597, -346)
-scale = Vector2(2.225, 1.76934)
+position = Vector2(-450, -394)
+scale = Vector2(3.35, 3.19536)
 texture = ExtResource("7_8fm6k")
 
 [node name="StartButton" type="TextureButton" parent="MainMenu"]
-offset_left = -683.0
-offset_top = -769.0
-offset_right = -628.0
-offset_bottom = -714.0
+offset_left = -760.0
+offset_top = -845.0
+offset_right = -704.0
+offset_bottom = -786.0
 scale = Vector2(5.24448, 5.24448)
 texture_normal = ExtResource("6_v76gy")
 texture_pressed = ExtResource("8_w3kwx")
@@ -95,15 +82,16 @@ text = "START"
 label_settings = SubResource("LabelSettings_ey8y3")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -898.0
-offset_top = -925.0
-offset_right = -488.0
-offset_bottom = -837.0
+offset_left = -929.0
+offset_top = -1153.0
+offset_right = -519.0
+offset_bottom = -1065.0
 text = "Score: 0"
 label_settings = SubResource("LabelSettings_tut2x")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStream_dwk3m")
+stream = ExtResource("11_q28vb")
+autoplay = true
 
 [connection signal="popped" from="Bubble" to="." method="_on_bubble_popped"]
 [connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_texture_button_pressed"]
