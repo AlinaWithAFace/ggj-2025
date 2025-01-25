@@ -20,9 +20,6 @@ region_enabled = true
 region_rect = Rect2(4.718, 500, 66.031, 101.462)
 script = ExtResource("3_rdumw")
 
-[node name="Node2D" parent="." instance=ExtResource("4_q86o0")]
-position = Vector2(-718, -459)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-560, -328)
 
@@ -40,3 +37,6 @@ position = Vector2(-255, -290)
 
 [node name="Obstacle5" parent="." instance=ExtResource("6_sfqoe")]
 position = Vector2(-388, -68)
+
+[node name="Bubble" parent="." instance=ExtResource("4_q86o0")]
+position = Vector2(-634, -380)

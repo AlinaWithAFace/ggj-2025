@@ -9,7 +9,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("BubbleBody:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +26,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("BubbleBody:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,14 +43,12 @@ _data = {
 }
 
 [node name="Bubble" type="Node2D" node_paths=PackedStringArray("bubble_body")]
-position = Vector2(0, 1)
 script = ExtResource("1_xkymh")
 audio = ExtResource("2_6eups")
 bubble_body = NodePath(".")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BubbleBody" type="Sprite2D" parent="."]
 texture = ExtResource("1_6rwhg")
-centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
