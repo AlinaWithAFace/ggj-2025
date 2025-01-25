@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://djwfsgmakgith"]
+
+[ext_resource type="FontFile" uid="uid://dhwnbdbovt8wu" path="res://font/04B_30__.TTF" id="1_sd5ff"]
+
+[resource]
+font = ExtResource("1_sd5ff")
+font_size = 64

@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwh1yg2mh8hyj"]
+[gd_scene load_steps=2 format=3 uid="uid://0vkj6k1gcdbd"]
 
 [ext_resource type="Script" path="res://obstacles/obstacle_manager.gd" id="1_jwxed"]
 

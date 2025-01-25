@@ -1,30 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://ds34jynxuonpu"]
+[gd_scene load_steps=13 format=3 uid="uid://ds34jynxuonpu"]
 
 [ext_resource type="Script" path="res://Root.gd" id="1_mqs1h"]
 [ext_resource type="Texture2D" uid="uid://dbis3tuj2nb0e" path="res://elizabeth/Gradient1.png" id="2_nlul5"]
 [ext_resource type="Script" path="res://Backdrop/Backdrop.gd" id="3_rdumw"]
 [ext_resource type="PackedScene" uid="uid://cdvoaeft5jym6" path="res://bubble/bubble-node-2d.tscn" id="4_q86o0"]
-[ext_resource type="Texture2D" uid="uid://hiwe8cvn0x03" path="res://gameover.png" id="6_g1wva"]
-[ext_resource type="PackedScene" path="res://obstacles/obstacle_manager.tscn" id="6_q0rfm"]
+[ext_resource type="PackedScene" uid="uid://0vkj6k1gcdbd" path="res://obstacles/obstacle_manager.tscn" id="6_q0rfm"]
 [ext_resource type="Texture2D" uid="uid://cu14wgg5jv0c8" path="res://elizabeth/bubble1.png" id="6_v76gy"]
 [ext_resource type="Texture2D" uid="uid://wxup51e2bvpe" path="res://Backdrop/blur.png" id="7_8fm6k"]
 [ext_resource type="Texture2D" uid="uid://bleftpg85tlm7" path="res://elizabeth/bubble3.png" id="8_w3kwx"]
 [ext_resource type="FontFile" uid="uid://dhwnbdbovt8wu" path="res://font/04B_30__.TTF" id="9_l66tg"]
+[ext_resource type="LabelSettings" uid="uid://djwfsgmakgith" path="res://label-settings.tres" id="9_qk2ah"]
 [ext_resource type="AudioStream" uid="uid://ce5d4ttk65wyd" path="res://audio/mx_water_hell_loopable.ogg" id="11_q28vb"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ey8y3"]
-font = ExtResource("9_l66tg")
-font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_tut2x"]
 font = ExtResource("9_l66tg")
 font_size = 64
 
-[node name="Root" type="Node2D" node_paths=PackedStringArray("backdrop", "gameover", "bubble", "start_button", "score_label", "main_menu_node")]
+[node name="Root" type="Node2D" node_paths=PackedStringArray("backdrop", "bubble", "start_button", "score_label", "main_menu_node")]
 script = ExtResource("1_mqs1h")
 accel = 10.0
 backdrop = NodePath("Backdrop")
-gameover = NodePath("Gameover")
 bubble = NodePath("Bubble")
 start_button = NodePath("MainMenu/StartButton")
 score_label = NodePath("Label")
@@ -45,19 +40,13 @@ position = Vector2(-560, -328)
 [node name="Bubble" parent="." instance=ExtResource("4_q86o0")]
 position = Vector2(-634, -380)
 
-[node name="Gameover" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-550, -351)
-scale = Vector2(4.16, 2.12)
-texture = ExtResource("6_g1wva")
-
 [node name="ObstacleManager" parent="." instance=ExtResource("6_q0rfm")]
 position = Vector2(-533, -552)
 
 [node name="MainMenu" type="Node2D" parent="."]
 
 [node name="Blur" type="Sprite2D" parent="MainMenu"]
-position = Vector2(-450, -394)
+position = Vector2(-541, -468)
 scale = Vector2(3.35, 3.19536)
 texture = ExtResource("7_8fm6k")
 
@@ -79,7 +68,7 @@ offset_right = 303.669
 offset_bottom = 106.305
 scale = Vector2(0.149168, 0.149168)
 text = "START"
-label_settings = SubResource("LabelSettings_ey8y3")
+label_settings = ExtResource("9_qk2ah")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -929.0
@@ -92,6 +81,16 @@ label_settings = SubResource("LabelSettings_tut2x")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_q28vb")
 autoplay = true
+
+[node name="EndMenu" type="Node2D" parent="."]
+visible = false
+position = Vector2(-786, -422)
+
+[node name="Label" type="Label" parent="EndMenu"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "You died!"
+label_settings = ExtResource("9_qk2ah")
 
 [connection signal="popped" from="Bubble" to="." method="_on_bubble_popped"]
 [connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_texture_button_pressed"]
