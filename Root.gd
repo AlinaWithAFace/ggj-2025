@@ -13,6 +13,8 @@ class_name Root
 @export var speed_scale: float = 5
 var started = false
 
+@export var main_menu_node : Node2D = null
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -57,8 +59,7 @@ func _on_bubble_popped() -> void:
 
 func _on_texture_button_pressed() -> void:
 	started = true
-	gameover.hide()
-	start_button.hide()
+	main_menu_node.hide()
 	bubble.show()
 	bubble.reset()
 	distance = 0
