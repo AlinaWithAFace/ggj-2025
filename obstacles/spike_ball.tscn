@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4ixhfbnx1f6s"]
+
+[ext_resource type="Script" path="res://obstacles/obstacle.gd" id="1_re7f3"]
+[ext_resource type="Texture2D" uid="uid://baa8wgmrm8fin" path="res://obstacles/obstacle_sprites/Spike_ball3.webp" id="2_60d8n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_80vsu"]
+
+[node name="Obstacle" type="Node2D"]
+script = ExtResource("1_re7f3")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_80vsu")
+
+[node name="SpikeBall3" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("2_60d8n")
+
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
