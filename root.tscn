@@ -6,9 +6,9 @@
 [ext_resource type="Script" path="res://Backdrop/Backdrop.gd" id="3_rdumw"]
 [ext_resource type="PackedScene" uid="uid://cdvoaeft5jym6" path="res://bubble/bubble-node-2d.tscn" id="4_q86o0"]
 [ext_resource type="Texture2D" uid="uid://hiwe8cvn0x03" path="res://gameover.png" id="6_g1wva"]
-[ext_resource type="PackedScene" uid="uid://db3v7nkf80qxn" path="res://obstacles/spike_ball.tscn" id="6_sfqoe"]
 [ext_resource type="Texture2D" uid="uid://cu14wgg5jv0c8" path="res://elizabeth/bubble1.png" id="6_v76gy"]
 [ext_resource type="Texture2D" uid="uid://bleftpg85tlm7" path="res://elizabeth/bubble3.png" id="8_w3kwx"]
+[ext_resource type="PackedScene" uid="uid://bwh1yg2mh8hyj" path="res://obstacles/obstacle_manager.tscn" id="9_pjxqc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ey8y3"]
 font_size = 64
@@ -37,21 +37,6 @@ script = ExtResource("3_rdumw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-560, -328)
-
-[node name="Obstacle" parent="." instance=ExtResource("6_sfqoe")]
-position = Vector2(-754, -437)
-
-[node name="Obstacle2" parent="." instance=ExtResource("6_sfqoe")]
-position = Vector2(-911, -292)
-
-[node name="Obstacle3" parent="." instance=ExtResource("6_sfqoe")]
-position = Vector2(-392, -464)
-
-[node name="Obstacle4" parent="." instance=ExtResource("6_sfqoe")]
-position = Vector2(-255, -290)
-
-[node name="Obstacle5" parent="." instance=ExtResource("6_sfqoe")]
-position = Vector2(-388, -68)
 
 [node name="Bubble" parent="." instance=ExtResource("4_q86o0")]
 position = Vector2(-634, -380)
@@ -89,6 +74,9 @@ offset_right = -1009.0
 offset_bottom = -602.0
 text = "Score: 0"
 label_settings = SubResource("LabelSettings_tut2x")
+
+[node name="ObstacleManager" parent="." instance=ExtResource("9_pjxqc")]
+position = Vector2(-599, -914)
 
 [connection signal="popped" from="Bubble" to="." method="_on_bubble_popped"]
 [connection signal="pressed" from="StartButton" to="." method="_on_texture_button_pressed"]

@@ -12,12 +12,9 @@ script = ExtResource("1_re7f3")
 scale = Vector2(0.025, 0.025)
 texture = ExtResource("2_60d8n")
 
-[node name="Spike" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
-contact_monitor = true
-max_contacts_reported = 1
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_80vsu")
 
-[connection signal="body_entered" from="Spike" to="." method="_on_rigid_body_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

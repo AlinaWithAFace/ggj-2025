@@ -18,3 +18,10 @@ func _on_rigid_body_2d_body_entered(body: Node) -> void:
 	if(body.has_method("pop")):
 		body.pop()
 	pass # Replace with function body.
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if(body.has_method("pop")):
+		body.pop()
+	print("entered")
+	pass # Replace with function body.
