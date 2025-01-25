@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bleftpg85tlm7"
-path="res://.godot/imported/bubble3.png-fbdbc85ed47da1007f67c24cc6e208ce.ctex"
+uid="uid://3hq6uwh1h4fu"
+path="res://.godot/imported/Main Menu1-0.png-1f8eaa62ef5cbadab9ddba76eb2ea1dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://elizabeth/bubble3.png"
-dest_files=["res://.godot/imported/bubble3.png-fbdbc85ed47da1007f67c24cc6e208ce.ctex"]
+source_file="res://elizabeth/Main Menu1-0.png"
+dest_files=["res://.godot/imported/Main Menu1-0.png-1f8eaa62ef5cbadab9ddba76eb2ea1dd.ctex"]
 
 [params]
 
