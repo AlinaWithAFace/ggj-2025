@@ -1,11 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4ixhfbnx1f6s"]
+[gd_scene load_steps=4 format=3 uid="uid://db3v7nkf80qxn"]
 
 [ext_resource type="Script" path="res://obstacles/obstacle.gd" id="1_re7f3"]
-[ext_resource type="Texture2D" uid="uid://6cfo4530gff8" path="res://obstacles/obstacle_sprites/spikeball.png" id="2_bwfol"]
+[ext_resource type="Texture2D" uid="uid://5fnkrcuaylnn" path="res://obstacles/obstacle_sprites/spikeball.png" id="2_bwfol"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80vsu"]
 
 [node name="SpikeBall" type="Node2D"]
+scale = Vector2(6, 6)
 script = ExtResource("1_re7f3")
 
 [node name="SpikeBall3" type="Sprite2D" parent="."]
