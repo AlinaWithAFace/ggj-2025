@@ -1,11 +1,31 @@
 [gd_scene load_steps=3 format=3 uid="uid://ca0m8u7o3bfl8"]
 
-[ext_resource type="Script" path="res://obstacles/obstacle.gd" id="1_rb6em"]
+[sub_resource type="GDScript" id="GDScript_jimg1"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+	
+
+
+
+func _on_rigid_body_2d_body_entered(body: Node) -> void:
+	if(body.has_method(\"pop\")):
+		body.pop()
+	pass # Replace with function body.
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80vsu"]
 
-[node name="Obstacle" type="Node2D"]
-script = ExtResource("1_rb6em")
+[node name="Obstacle2" type="Node2D"]
+script = SubResource("GDScript_jimg1")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 gravity_scale = 0.0
