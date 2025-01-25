@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds34jynxuonpu"]
+
+[ext_resource type="Script" path="res://Root.gd" id="1_mqs1h"]
+[ext_resource type="Script" path="res://Backdrop/Backdrop.gd" id="3_rdumw"]
+[ext_resource type="Texture2D" uid="uid://bcpt6jablts6q" path="res://Backdrop/test-backdrop-gradient.png" id="3_vsgtc"]
+[ext_resource type="PackedScene" uid="uid://ca0m8u7o3bfl8" path="res://obstacles/obstacle.tscn" id="4_j33qk"]
+
+[node name="Root" type="Node2D" node_paths=PackedStringArray("backdrop")]
+script = ExtResource("1_mqs1h")
+accel = 10.0
+backdrop = NodePath("Backdrop")
+
+[node name="Backdrop" type="Sprite2D" parent="."]
+position = Vector2(-621, -207)
+rotation = 3.14159
+scale = Vector2(25.012, -9.5125)
+texture = ExtResource("3_vsgtc")
+region_enabled = true
+region_rect = Rect2(4.718, 500, 66.031, 101.462)
+script = ExtResource("3_rdumw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-560, -328)
+
+[node name="Obstacle" parent="." instance=ExtResource("4_j33qk")]
+position = Vector2(-619, -486)
+
+[node name="Obstacle2" parent="." instance=ExtResource("4_j33qk")]
+position = Vector2(-431, -397)
+
+[node name="Obstacle3" parent="." instance=ExtResource("4_j33qk")]
+position = Vector2(-286, -499)
+
+[node name="Obstacle4" parent="." instance=ExtResource("4_j33qk")]
+position = Vector2(-910, -377)
