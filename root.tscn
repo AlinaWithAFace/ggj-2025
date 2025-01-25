@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://ds34jynxuonpu"]
+[gd_scene load_steps=12 format=3 uid="uid://ds34jynxuonpu"]
 
 [ext_resource type="Script" path="res://Root.gd" id="1_mqs1h"]
+[ext_resource type="AudioStream" uid="uid://ce5d4ttk65wyd" path="res://audio/mx_water_hell_loopable.ogg" id="2_3rgoo"]
 [ext_resource type="Texture2D" uid="uid://dbis3tuj2nb0e" path="res://elizabeth/Gradient1.png" id="2_nlul5"]
 [ext_resource type="Script" path="res://Backdrop/Backdrop.gd" id="3_rdumw"]
 [ext_resource type="PackedScene" uid="uid://cdvoaeft5jym6" path="res://bubble/bubble-node-2d.tscn" id="4_q86o0"]
@@ -23,6 +24,7 @@ gameover = NodePath("Gameover")
 bubble = NodePath("Bubble")
 start_button = NodePath("StartButton")
 score_label = NodePath("Label")
+music = ExtResource("2_3rgoo")
 
 [node name="Backdrop" type="Sprite2D" parent="."]
 position = Vector2(-621, -207)
@@ -71,6 +73,7 @@ texture_pressed = ExtResource("8_w3kwx")
 ignore_texture_size = true
 
 [node name="Label2" type="Label" parent="StartButton"]
+layout_mode = 0
 offset_left = 9.53384
 offset_top = 16.2075
 offset_right = 200.534
