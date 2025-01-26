@@ -184,6 +184,7 @@ func add_plankton(p:Plankton):
 	planktonians.append(p)
 	target_scale *= 1.1
 	
+
 func kill_plankton(obstacle: Obstacle):
 	var to_kill = max(1,floor(score *.3))
 	match ((obstacle as Obstacle).obstacle_type):
@@ -193,7 +194,6 @@ func kill_plankton(obstacle: Obstacle):
 			to_kill = 3
 		Obstacle.ObstacleClass.DEATHDAMAGE:
 			to_kill = 5
-	
 	score -= to_kill
 	damaged.play()
 	for i in range(to_kill):
