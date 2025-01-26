@@ -49,9 +49,12 @@ region_enabled = true
 region_rect = Rect2(4.718, 2048, 66.031, 101.462)
 script = ExtResource("3_rdumw")
 
-[node name="Bubble" parent="." instance=ExtResource("4_q86o0")]
+[node name="Bubble" parent="." node_paths=PackedStringArray("obstacle_manager", "plankton_manager") instance=ExtResource("4_q86o0")]
 position = Vector2(-634, -380)
 max_scale = 1.0
+obstacle_manager = NodePath("../ObstacleManager")
+plankton_manager = NodePath("../Plankton Manager")
+score_speed_multiplier = 25
 
 [node name="ObstacleManager" parent="." instance=ExtResource("6_q0rfm")]
 position = Vector2(-560, -897)
