@@ -8,9 +8,12 @@ class_name ObstacleManager
 var timer: Timer
 var active_obstacles
 @export var speed = 0
-var packed_obstacle = preload("res://obstacles/spike_ball.tscn")
+@export var obj = "res://obstacles/spike_ball.tscn"
+var packed_obstacle
 var rng = RandomNumberGenerator.new()
 var temp
+
+@export var plankton = false
 
 var started:bool = false
 
@@ -18,6 +21,7 @@ var started:bool = false
 func _ready() -> void:
 	timer = $Timer
 	active_obstacles = Array()
+	packed_obstacle = load(obj)
 	pass # Replace with function body.
 	
 	
