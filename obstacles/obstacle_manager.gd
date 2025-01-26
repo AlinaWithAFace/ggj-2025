@@ -111,6 +111,3 @@ func test_collision(bubble: Bubble, bubble_size:float):
 #							bubble.pop()
 #						_:
 							
-
-
-

@@ -51,7 +51,7 @@ radius = 100.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r5qdg"]
 shader = ExtResource("3_gfcgx")
 
-[node name="Bubble" type="RigidBody2D" node_paths=PackedStringArray("damaged", "pickup", "bubble_body", "bubble_scale_root", "bubble_shape")]
+[node name="Bubble" type="RigidBody2D" node_paths=PackedStringArray("damaged", "pickup", "bubble_body", "bubble_scale_root", "bubble_shape", "plankton_parent")]
 modulate = Color(1, 1, 1, 0.615686)
 gravity_scale = 0.0
 script = ExtResource("1_xkymh")
@@ -61,6 +61,7 @@ bubble_body = NodePath("ScaleNode/BubbleBody")
 bubble_scale_root = NodePath("ScaleNode")
 bubble_shape = NodePath("CollisionShape2D")
 SCALE_SPEED = 1.0
+plankton_parent = NodePath("ScaleNode/planktons")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 active = false
@@ -73,6 +74,8 @@ autoplay = "idle_float"
 shape = SubResource("CircleShape2D_y00x3")
 
 [node name="ScaleNode" type="Node2D" parent="."]
+
+[node name="planktons" type="Node2D" parent="ScaleNode"]
 
 [node name="BubbleBody" type="Sprite2D" parent="ScaleNode"]
 material = SubResource("ShaderMaterial_r5qdg")
