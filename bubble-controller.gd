@@ -118,7 +118,6 @@ func _stop_deflate_bubble():
 	pass
 	
 func pop(collided: Obstacle):
-	return
 	
 	started = false
 	popped.emit()

@@ -1,4 +1,6 @@
 extends Node2D
+class_name ObstacleManager
+
 @export var width = 0
 @export var max_obstacles = 10
 @export var max_distance = 100
@@ -10,6 +12,8 @@ var packed_obstacle = preload("res://obstacles/spike_ball.tscn")
 var rng = RandomNumberGenerator.new()
 var temp
 
+var started:bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer = $Timer
@@ -19,15 +23,24 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(!started):
+		return
 		
 	for obstacle in active_obstacles :
 		obstacle.position.y += speed*delta
 		if obstacle.position.y > max_distance:
 			place_obstacle(obstacle)
 			pass
-			
 	pass
+	
 
+func Cleanup():
+	started = false
+	for node in active_obstacles:
+		remove_child(node)
+		node.queue_free()
+		pass
+	active_obstacles.clear()
 
 func _on_timer_timeout() -> void:
 	if(active_obstacles.size() < max_obstacles):

@@ -24,13 +24,14 @@ size = Vector2(1074.82, 92.9887)
 font = ExtResource("9_l66tg")
 font_size = 64
 
-[node name="Root" type="Node2D" node_paths=PackedStringArray("backdrop", "bubble", "start_button", "score_label", "main_menu_node")]
+[node name="Root" type="Node2D" node_paths=PackedStringArray("backdrop", "bubble", "start_button", "score_label", "obstacle_manager", "main_menu_node")]
 script = ExtResource("1_mqs1h")
 accel = 10.0
 backdrop = NodePath("Backdrop")
 bubble = NodePath("Bubble")
 start_button = NodePath("MainMenu/StartButton")
 score_label = NodePath("Label")
+obstacle_manager = NodePath("ObstacleManager")
 main_menu_node = NodePath("MainMenu")
 
 [node name="Backdrop" type="Sprite2D" parent="."]
