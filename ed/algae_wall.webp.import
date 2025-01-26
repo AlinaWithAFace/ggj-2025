@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bleftpg85tlm7"
-path="res://.godot/imported/bubble3.png-fbdbc85ed47da1007f67c24cc6e208ce.ctex"
+uid="uid://bcs6rmk6am0yw"
+path="res://.godot/imported/algae_wall.webp-f78c2c563a8ee188c949a1b105ac8c22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://elizabeth/bubble3.png"
-dest_files=["res://.godot/imported/bubble3.png-fbdbc85ed47da1007f67c24cc6e208ce.ctex"]
+source_file="res://ed/algae_wall.webp"
+dest_files=["res://.godot/imported/algae_wall.webp-f78c2c563a8ee188c949a1b105ac8c22.ctex"]
 
 [params]
 

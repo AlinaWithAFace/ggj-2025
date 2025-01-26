@@ -5,15 +5,16 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80vsu"]
 
-[node name="SpikeBall" type="Node2D"]
-scale = Vector2(6, 6)
+[node name="SpikeBall" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_re7f3")
+sprite = NodePath("SpikeBall3")
 
 [node name="SpikeBall3" type="Sprite2D" parent="."]
-scale = Vector2(0.345, 0.345)
+scale = Vector2(1.37, 1.37)
 texture = ExtResource("2_bwfol")
 
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_80vsu")

@@ -20,6 +20,7 @@ var started = false
 func _ready() -> void:
 	speed = 0;
 	distance = 0;
+	#gameover.hide()
 	
 	bubble.hide()
 	start_button.show()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu14wgg5jv0c8"
-path="res://.godot/imported/bubble1.png-a89c72d2a9a5528a882f691bbdb98a35.ctex"
+uid="uid://fkav626dh0dj"
+path="res://.godot/imported/plankton_drip.webp-a86c929b626e2666e048f3478ba117c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://elizabeth/bubble1.png"
-dest_files=["res://.godot/imported/bubble1.png-a89c72d2a9a5528a882f691bbdb98a35.ctex"]
+source_file="res://ed/plankton_drip.webp"
+dest_files=["res://.godot/imported/plankton_drip.webp-a86c929b626e2666e048f3478ba117c2.ctex"]
 
 [params]
 
