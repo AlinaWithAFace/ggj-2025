@@ -92,13 +92,13 @@ func _process(delta: float) -> void:
 	#if collision:
 	#	pop()
 	
+
 	pass
 
 func _start_inflate_bubble():
 	print("inflate bubble")
-
 	target_scale *= 1.3;
-	
+	bubble_body.apply_scale(Vector2(2,2))
 	audio.instantiate_playback()
 
 	bubble_scale = bubble_body.scale
@@ -110,7 +110,9 @@ func _stop_inflate_bubble():
 
 func _start_deflate_bubble():
 	print("deflate bubble")
-	target_scale *= 0.8 
+	target_scale *= 0.8
+	bubble_body.apply_scale(Vector2(.5,.5))
+
 #	audio.instantiate_playback()
 	pass
 
