@@ -8,7 +8,8 @@ class_name ObstacleManager
 @export var spawn_height = 0
 var timer: Timer
 var active_obstacles
-@export var obstacle_radius: float = 0
+@export var obstacle_radius: float = 30
+@export var plankton_radius: float = 50
 @export var speed = 0
 @export var obj = "res://obstacles/spike_ball.tscn"
 var packed_obstacle
@@ -73,12 +74,24 @@ func place_obstacle(ob):
 
 
 
+func destroy_plankton(obstacles):
+	var radSum: float = plankton_radius + obstacle_radius
+	for obstacle in obstacles:
+		for plank in active_obstacles:
+			var dist: float = (plank.global_position - obstacle.global_position).length()
+			if(radSum > dist):
+				active_obstacles.remove_at(active_obstacles.find(plank))
+				remove_child(plank)
+				plank.queue_free()
+
 func test_collision(bubble: Bubble, bubble_size:float):
 	var bubble_pos = bubble.position
-	
+	var rad = obstacle_radius
+	if(plankton):
+		rad = plankton_radius
 	var working: Array = Array(active_obstacles)
 	for obstacle in working:
-		var radSum: float = bubble_size + obstacle_radius
+		var radSum: float = bubble_size + rad
 		var dist: float = (bubble_pos - obstacle.global_position).length()
 		
 		#print("Testing %s vs %s"%[radSum, dist])

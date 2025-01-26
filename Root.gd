@@ -54,6 +54,8 @@ func _process(delta: float) -> void:
 		
 		backdrop.region_rect.position = pos;
 		
+		
+		plankton_manager.destroy_plankton(obstacle_manager.active_obstacles)
 		obstacle_manager.test_collision(bubble, bubble.curr_scale * 100)
 
 		plankton_manager.test_collision(bubble, bubble.curr_scale * 100)

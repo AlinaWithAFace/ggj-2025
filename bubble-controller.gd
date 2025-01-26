@@ -15,8 +15,8 @@ class_name Bubble
 @export var SCALE_SPEED : float = 8;
 
 @export var MAGNITUDE = 1
-
-
+@export var collider_scalar = 140
+@export var max_scale = 1.2
 var score = 0
 
 signal popped
@@ -27,7 +27,7 @@ var size:
 
 
 var curr_scale:float = 1
-var target_scale:float = 1
+@export var target_scale:float = 1
 var started: bool = false
 var start_pos: Vector2 = Vector2.ZERO
 
@@ -87,13 +87,14 @@ func _process(delta: float) -> void:
 		
 	time+=delta* 2;
 	var sine_val:Vector2 = Vector2(sin(time), 0)
+	target_scale = min(target_scale, max_scale)
 	
 	curr_scale = lerp(curr_scale, target_scale, delta * SCALE_SPEED)
 	
 	scale = Vector2(curr_scale, curr_scale)
 	
 	bubble_scale_root.scale = Vector2(curr_scale, curr_scale)
-	((bubble_shape.shape) as CircleShape2D).radius = curr_scale * 100
+	((bubble_shape.shape) as CircleShape2D).radius = curr_scale * collider_scalar
 	#var collision = move_and_collide(sine_val)
 	#if collision:
 	#	pop()
