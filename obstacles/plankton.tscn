@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vr5xyofxvoh8"]
+[gd_scene load_steps=8 format=3 uid="uid://dj0qmkb7vutum"]
 
 [ext_resource type="Script" path="res://obstacles/plankton.gd" id="1_dh6tr"]
 [ext_resource type="Texture2D" uid="uid://f26t7f1jnwm1" path="res://ed/plankton_dress.webp" id="2_2iid4"]

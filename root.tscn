@@ -5,14 +5,14 @@
 [ext_resource type="Script" path="res://Backdrop/Backdrop.gd" id="3_rdumw"]
 [ext_resource type="PackedScene" uid="uid://cdvoaeft5jym6" path="res://bubble/bubble-node-2d.tscn" id="4_q86o0"]
 [ext_resource type="PackedScene" uid="uid://bcffng15h8toq" path="res://obstacles/obstacle_manager.tscn" id="6_q0rfm"]
-[ext_resource type="PackedScene" uid="uid://k63gvdyno5cg" path="res://plankton_manager.tscn" id="6_y6b11"]
+[ext_resource type="PackedScene" uid="uid://cfiy5twoehxia" path="res://plankton_manager.tscn" id="6_y6b11"]
 [ext_resource type="Texture2D" uid="uid://wxup51e2bvpe" path="res://Backdrop/blur.png" id="7_8fm6k"]
 [ext_resource type="Texture2D" uid="uid://dey5ip62xdueu" path="res://elizabeth/Bubble1v1-1.png" id="8_wkr4s"]
 [ext_resource type="Texture2D" uid="uid://bul3ovtwowlop" path="res://elizabeth/Bubble2v1-1.png" id="9_2ae2f"]
 [ext_resource type="FontFile" uid="uid://dhwnbdbovt8wu" path="res://font/04B_30__.TTF" id="9_l66tg"]
-[ext_resource type="LabelSettings" uid="uid://djwfsgmakgith" path="res://label-settings.tres" id="9_qk2ah"]
+[ext_resource type="LabelSettings" path="res://label-settings.tres" id="9_qk2ah"]
 [ext_resource type="AudioStream" uid="uid://ce5d4ttk65wyd" path="res://audio/mx_water_hell_loopable.ogg" id="11_q28vb"]
-[ext_resource type="PhysicsMaterial" path="res://BouncyWalls.tres" id="12_5m8k6"]
+[ext_resource type="PhysicsMaterial" uid="uid://3oyltkqr2hdo" path="res://BouncyWalls.tres" id="12_5m8k6"]
 [ext_resource type="Texture2D" uid="uid://bcs6rmk6am0yw" path="res://ed/algae_wall.webp" id="13_bv5hq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_psfyo"]
@@ -37,18 +37,16 @@ plankton_manager = NodePath("Plankton Manager")
 main_menu_node = NodePath("MainMenu")
 
 [node name="Backdrop" type="Sprite2D" parent="."]
-position = Vector2(-170.606, -517.698)
+position = Vector2(-164, -520)
 rotation = 3.14159
 scale = Vector2(62.8422, -34.2787)
 texture = ExtResource("2_nlul5")
 region_enabled = true
-region_rect = Rect2(4.718, 1000, 66.031, 101.462)
+region_rect = Rect2(4.718, 2048, 66.031, 101.462)
 script = ExtResource("3_rdumw")
 
 [node name="Bubble" parent="." instance=ExtResource("4_q86o0")]
 position = Vector2(-634, -380)
-collision_mask = 16385
-SCALE_SPEED = 8.0
 
 [node name="ObstacleManager" parent="." instance=ExtResource("6_q0rfm")]
 position = Vector2(-560, -897)
@@ -154,6 +152,7 @@ scale = Vector2(0.192624, 0.220504)
 texture = ExtResource("13_bv5hq")
 
 [node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(0, 49)
 physics_material_override = ExtResource("12_5m8k6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
@@ -225,10 +224,10 @@ scale = Vector2(0.192624, 0.220504)
 texture = ExtResource("13_bv5hq")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -716.0
-offset_top = -846.0
-offset_right = -306.0
-offset_bottom = -758.0
+offset_left = -730.0
+offset_top = -801.0
+offset_right = -320.0
+offset_bottom = -713.0
 scale = Vector2(0.701841, 0.701841)
 text = "Score: 0"
 label_settings = SubResource("LabelSettings_tut2x")

@@ -39,7 +39,10 @@ func _process(delta: float) -> void:
 		if(active_time > 3):
 			obstacle_manager.started = true
 			plankton_manager.started = true
-		var spriteY = 1000 - distance;
+		if(active_time > 60):
+			finish_game()
+			return
+		var spriteY = 2048 - ((active_time/60.0) * 2048);
 		var sz = bubble.size;
 		sz +=1
 		
@@ -51,26 +54,32 @@ func _process(delta: float) -> void:
 		
 		backdrop.region_rect.position = pos;
 		
-		if(obstacle_manager.test_collision(bubble.position, bubble.curr_scale * 100)):
-			bubble.pop()
+		obstacle_manager.test_collision(bubble, bubble.curr_scale * 100)
+
+		plankton_manager.test_collision(bubble, bubble.curr_scale * 100)
 		
-		score_label.text = "Score: %s" % floor(distance)
+		
+		score_label.text = "Score: %s" % bubble.score
 		print(bubble.linear_velocity)
 	
-
-func _on_bubble_popped() -> void:
+	
+func finish_game():
 	if(started):
 		speed = 0
 		accel = 0
 		bubble.velocity = Vector2.ZERO
 		bubble.linear_velocity = Vector2.ZERO
 		
-		bubble.hide()
 		main_menu_node.show()
 		started = false
 		obstacle_manager.Cleanup()
 		plankton_manager.Cleanup()
 		active_time = 0
+
+
+func _on_bubble_popped() -> void:
+	return
+
 	
 func _on_texture_button_pressed() -> void:
 	started = true

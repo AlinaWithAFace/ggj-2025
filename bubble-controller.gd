@@ -17,7 +17,7 @@ class_name Bubble
 @export var MAGNITUDE = 1
 
 
-
+var score = 0
 
 signal popped
 
@@ -43,6 +43,7 @@ func reset():
 	scale = Vector2.ONE
 	started = true
 	position = start_pos
+	score = 0
 	
 
 # Called when the node enters the scene tree for the first time.
@@ -53,6 +54,9 @@ func _ready() -> void:
 
 
 var time: float = 0
+
+var inflate_timer:float = 0
+var deflate_timer:float = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -142,6 +146,14 @@ func _input(event):
 		
 		
 	
+func add_plankton(p:Plankton):
+	score += 1
+	target_scale *= 1.1
+	
+func kill_plankton():
+	score -= 1
+	target_scale *= .9
+
 func handle_touch(_event : InputEventScreenTouch) -> void:
 	if _event.pressed:
 		touching = true

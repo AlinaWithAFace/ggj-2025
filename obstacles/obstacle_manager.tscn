@@ -7,7 +7,7 @@ script = ExtResource("1_jwxed")
 width = 500
 max_obstacles = 1
 max_distance = 1000
-obstacle_radius = 38.0
+obstacle_radius = 24.0
 speed = 100
 
 [node name="Timer" type="Timer" parent="."]

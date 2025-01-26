@@ -1,6 +1,7 @@
 extends Node2D
 class_name ObstacleManager
 
+
 @export var width = 0
 @export var max_obstacles = 10
 @export var max_distance = 100
@@ -72,15 +73,26 @@ func place_obstacle(ob):
 
 
 
-func test_collision(bubble_pos: Vector2, bubble_size:float):
-	for obstacle in active_obstacles:
+func test_collision(bubble: Bubble, bubble_size:float):
+	var bubble_pos = bubble.position
+	
+	var working: Array = Array(active_obstacles)
+	for obstacle in working:
 		var radSum: float = bubble_size + obstacle_radius
 		var dist: float = (bubble_pos - obstacle.global_position).length()
 		
-		print("Testing %s vs %s"%[radSum, dist])
+		#print("Testing %s vs %s"%[radSum, dist])
 		if(radSum > dist):
-			return true
-			pass
+			if(plankton):
+				bubble.add_plankton(obstacle as Plankton)
+				active_obstacles.remove_at(active_obstacles.find(obstacle))
+				remove_child(obstacle)
+				obstacle.queue_free()
+			else:
+				active_obstacles.remove_at(active_obstacles.find(obstacle))
+				remove_child(obstacle)
+				obstacle.queue_free()
+				bubble.kill_plankton()	
 			
-	return false			
+			
 		

@@ -1,4 +1,6 @@
 extends Node2D
+class_name Plankton
+
 
 var rng = RandomNumberGenerator.new()
 @export var array : Array
