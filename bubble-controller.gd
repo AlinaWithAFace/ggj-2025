@@ -207,7 +207,12 @@ func kill_plankton(obstacle: Obstacle):
 			get_tree().root.add_child(p)
 			p.global_position = pos
 			p.falling = true
+	check_game_over()
 
+func check_game_over():
+	if score < 0:
+		get_tree().reload_current_scene()
+		pass
 		
 
 func handle_touch(_event : InputEventScreenTouch) -> void:

@@ -15,3 +15,11 @@ func _on_bubble_popped():
 	print("Bubble popped!")
 	pass
 	
+	
+func _on_restart_button():
+	get_tree().reload_current_scene()
+	pass
+	
+func _on_texture_button_pressed():
+	get_tree().reload_current_scene()
+	pass
