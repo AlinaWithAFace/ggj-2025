@@ -163,10 +163,18 @@ func add_plankton(p:Plankton):
 	pickup.play()
 	target_scale *= 1.1
 	
-func kill_plankton():
-	score -= 1
-	damaged.play()
-	target_scale *= .9
+func kill_plankton(obstacle: Obstacle):
+	print((obstacle as Obstacle).obstacle_type)
+	match ((obstacle as Obstacle).obstacle_type):
+		Obstacle.ObstacleClass.LIGHTDAMAGE:
+			score -= 1
+			damaged.play()
+			target_scale *= .9
+		Obstacle.ObstacleClass.HEAVYDAMAGE:
+			score -= 5
+			damaged.play()
+			target_scale *= .9
+			
 
 func handle_touch(_event : InputEventScreenTouch) -> void:
 	if _event.pressed:
