@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://k63gvdyno5cg"]
+
+[ext_resource type="Script" path="res://obstacles/obstacle_manager.gd" id="1_aejgg"]
+
+[node name="Plankton Manager" type="Node2D"]
+script = ExtResource("1_aejgg")
+width = 500
+max_distance = 1000
+speed = 200
+obj = "res://obstacles/plankton.tscn"
+plankton = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
