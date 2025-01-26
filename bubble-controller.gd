@@ -19,12 +19,17 @@ class_name Bubble
 @export var collider_scalar = 140
 @export var max_scale = 1.2
 
+@export var place_range: float = 40
+@export var place_scale: float = .5
 @export var obstacle_manager : ObstacleManager
 @export var plankton_manager: ObstacleManager
 @export var score_speed_multiplier = 1
+
 var score = 0
 
 signal popped
+var planktonians: Array = Array()
+
 
 var size:
 	get:
@@ -50,6 +55,13 @@ func reset():
 	position = start_pos
 	score = 0
 	
+
+func Cleanup():
+	for p in planktonians:
+		remove_child(p)
+		p.queue_free
+	planktonians = Array()
+		
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -108,13 +120,15 @@ func _process(delta: float) -> void:
 	#if collision:
 	#	pop()
 	
-
+	for p in planktonians:
+		p.bob(delta)
+		
 	pass
 
 func _start_inflate_bubble():
 	print("inflate bubble")
-	target_scale *= 1.3;
-	audio.instantiate_playback()
+	target_scale *= 1.1;
+	#audio.instantiate_playback()
 	pickup.play()
 
 	bubble_scale = bubble_body.scale
@@ -157,24 +171,44 @@ func _input(event):
 		handle_drag(event)
 	
 	
-	
 func add_plankton(p:Plankton):
 	score += 1
 	pickup.play()
+	
+	p.get_parent().remove_child(p)
+	add_child(p)
+	p.position = Vector2(randf()*place_range-(place_range/2), randf()*place_range - (place_range/2))
+	p.scale = Vector2(place_scale, place_scale)
+	p.PickedUp()
+	
+	planktonians.append(p)
 	target_scale *= 1.1
 	
 func kill_plankton(obstacle: Obstacle):
-	print((obstacle as Obstacle).obstacle_type)
+	var to_kill = max(1,floor(score *.3))
 	match ((obstacle as Obstacle).obstacle_type):
 		Obstacle.ObstacleClass.LIGHTDAMAGE:
-			score -= 1
-			damaged.play()
-			target_scale *= .9
+			to_kill = 1
 		Obstacle.ObstacleClass.HEAVYDAMAGE:
-			score -= 5
-			damaged.play()
+			to_kill = 3
+		Obstacle.ObstacleClass.DEATHDAMAGE:
+			to_kill = 5
+	
+	score -= to_kill
+	damaged.play()
+	for i in range(to_kill):
+		if(len(planktonians) > 0):
 			target_scale *= .9
-			
+
+			var p = planktonians[0]
+			var pos = p.global_position
+			planktonians.remove_at(0)
+			remove_child(p)
+			get_tree().root.add_child(p)
+			p.global_position = pos
+			p.falling = true
+
+		
 
 func handle_touch(_event : InputEventScreenTouch) -> void:
 	if _event.pressed:
