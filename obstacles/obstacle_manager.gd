@@ -7,7 +7,7 @@ class_name ObstacleManager
 @export var max_distance = 100
 @export var spawn_height = 0
 var timer: Timer
-var active_obstacles
+var active_obstacles = Array()
 @export var obstacle_radius: float = 30
 @export var plankton_radius: float = 50
 @export var speed = 0
@@ -99,8 +99,6 @@ func test_collision(bubble: Bubble, bubble_size:float):
 			if(plankton):
 				bubble.add_plankton(obstacle as Plankton)
 				active_obstacles.remove_at(active_obstacles.find(obstacle))
-				remove_child(obstacle)
-				obstacle.queue_free()
 			else:
 				if(obstacle is Obstacle):
 					print("Collided with %s", (obstacle as Obstacle).obstacle_type)

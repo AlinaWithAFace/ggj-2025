@@ -19,12 +19,17 @@ class_name Bubble
 @export var collider_scalar = 140
 @export var max_scale = 1.2
 
+@export var place_range: float = 40
+@export var place_scale: float = .5
 @export var obstacle_manager : ObstacleManager
 @export var plankton_manager: ObstacleManager
 @export var score_speed_multiplier = 1
+
 var score = 0
 
 signal popped
+var planktonians: Array = Array()
+
 
 var size:
 	get:
@@ -50,6 +55,13 @@ func reset():
 	position = start_pos
 	score = 0
 	
+
+func Cleanup():
+	for p in planktonians:
+		remove_child(p)
+		p.queue_free
+	planktonians = Array()
+		
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -108,13 +120,15 @@ func _process(delta: float) -> void:
 	#if collision:
 	#	pop()
 	
-
+	for p in planktonians:
+		p.bob(delta)
+		
 	pass
 
 func _start_inflate_bubble():
 	print("inflate bubble")
-	target_scale *= 1.3;
-	audio.instantiate_playback()
+	target_scale *= 1.1;
+	#audio.instantiate_playback()
 	pickup.play()
 
 	bubble_scale = bubble_body.scale
@@ -157,16 +171,28 @@ func _input(event):
 		handle_drag(event)
 	
 	
-	
 func add_plankton(p:Plankton):
 	score += 1
 	pickup.play()
+	
+	p.get_parent().remove_child(p)
+	add_child(p)
+	p.position = Vector2(randf()*place_range-(place_range/2), randf()*place_range - (place_range/2))
+	p.scale = Vector2(place_scale, place_scale)
+	p.PickedUp()
+	
+	planktonians.append(p)
 	target_scale *= 1.1
 	
 func kill_plankton():
 	score -= 1
 	damaged.play()
 	target_scale *= .9
+	if(len(planktonians) > 0):
+		var p = planktonians[0]
+		planktonians.remove_at(0)
+		remove_child(p)
+		p.queue_free()
 
 func handle_touch(_event : InputEventScreenTouch) -> void:
 	if _event.pressed:

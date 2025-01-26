@@ -76,6 +76,7 @@ func finish_game():
 		started = false
 		obstacle_manager.Cleanup()
 		plankton_manager.Cleanup()
+		bubble.Cleanup()
 		active_time = 0
 
 

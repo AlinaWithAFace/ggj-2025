@@ -16,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://ce5d4ttk65wyd" path="res://audio/mx_water_hell_loopable.ogg" id="11_q28vb"]
 [ext_resource type="PhysicsMaterial" path="res://BouncyWalls.tres" id="12_5m8k6"]
 [ext_resource type="Texture2D" uid="uid://bcs6rmk6am0yw" path="res://ed/algae_wall.webp" id="13_bv5hq"]
-[ext_resource type="PackedScene" uid="uid://slgmlh6yjht8" path="res://water_shader.tscn" id="15_nekt4"]
+[ext_resource type="PackedScene" path="res://water_shader.tscn" id="15_nekt4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_psfyo"]
 size = Vector2(761.428, 1037.16)
