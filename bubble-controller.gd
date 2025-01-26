@@ -126,6 +126,7 @@ func pop(collided: Obstacle):
 	
 func wave(direction : Vector2):
 	apply_force(direction)
+	
 	pass
 	
 	
