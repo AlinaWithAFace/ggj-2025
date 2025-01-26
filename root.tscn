@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ds34jynxuonpu"]
+[gd_scene load_steps=17 format=3 uid="uid://ds34jynxuonpu"]
 
 [ext_resource type="Script" path="res://Root.gd" id="1_mqs1h"]
 [ext_resource type="Texture2D" uid="uid://dbis3tuj2nb0e" path="res://elizabeth/Gradient1.png" id="2_nlul5"]
@@ -11,6 +11,14 @@
 [ext_resource type="FontFile" uid="uid://dhwnbdbovt8wu" path="res://font/04B_30__.TTF" id="9_l66tg"]
 [ext_resource type="LabelSettings" path="res://label-settings.tres" id="9_qk2ah"]
 [ext_resource type="AudioStream" uid="uid://ce5d4ttk65wyd" path="res://audio/mx_water_hell_loopable.ogg" id="11_q28vb"]
+[ext_resource type="PhysicsMaterial" uid="uid://3oyltkqr2hdo" path="res://BouncyWalls.tres" id="12_5m8k6"]
+[ext_resource type="Texture2D" uid="uid://bcs6rmk6am0yw" path="res://ed/algae_wall.webp" id="13_bv5hq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psfyo"]
+size = Vector2(336.308, 472.708)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jq8gl"]
+size = Vector2(1074.82, 92.9887)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tut2x"]
 font = ExtResource("9_l66tg")
@@ -36,9 +44,11 @@ script = ExtResource("3_rdumw")
 
 [node name="Bubble" parent="." instance=ExtResource("4_q86o0")]
 position = Vector2(-634, -380)
+collision_mask = 16385
+SCALE_SPEED = 8.0
 
 [node name="ObstacleManager" parent="." instance=ExtResource("6_q0rfm")]
-position = Vector2(-533, -552)
+position = Vector2(-560, -897)
 
 [node name="MainMenu" type="Node2D" parent="."]
 
@@ -66,14 +76,6 @@ scale = Vector2(4.42505, 4.42505)
 text = "START"
 label_settings = ExtResource("9_qk2ah")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -929.0
-offset_top = -1153.0
-offset_right = -519.0
-offset_bottom = -1065.0
-text = "Score: 0"
-label_settings = SubResource("LabelSettings_tut2x")
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_q28vb")
 autoplay = true
@@ -90,6 +92,140 @@ label_settings = ExtResource("9_qk2ah")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-560, -328)
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+physics_material_override = ExtResource("12_5m8k6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(-163.648, -327.025)
+scale = Vector2(1.06064, 2.18306)
+shape = SubResource("RectangleShape2D_psfyo")
+
+[node name="repeatedWalls" type="Node2D" parent="LeftWall"]
+position = Vector2(0, -18)
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftWall/repeatedWalls"]
+position = Vector2(-776, -759)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="LeftWall/repeatedWalls"]
+position = Vector2(-775, -600)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="LeftWall/repeatedWalls"]
+position = Vector2(-775, -430)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="Sprite2D4" type="Sprite2D" parent="LeftWall/repeatedWalls"]
+position = Vector2(-774, -309)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="Sprite2D5" type="Sprite2D" parent="LeftWall/repeatedWalls"]
+position = Vector2(-775, -136)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="Sprite2D6" type="Sprite2D" parent="LeftWall/repeatedWalls"]
+position = Vector2(-774, 15)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="Sprite2D7" type="Sprite2D" parent="LeftWall/repeatedWalls"]
+position = Vector2(-774, 185)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+physics_material_override = ExtResource("12_5m8k6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+position = Vector2(-557, -904.5)
+scale = Vector2(1.06064, 2.18306)
+shape = SubResource("RectangleShape2D_jq8gl")
+
+[node name="BotWall" type="StaticBody2D" parent="."]
+physics_material_override = ExtResource("12_5m8k6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BotWall"]
+position = Vector2(-557, 291)
+scale = Vector2(1.06064, 2.18306)
+shape = SubResource("RectangleShape2D_jq8gl")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(-786, 0)
+physics_material_override = ExtResource("12_5m8k6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(-163.648, -327.025)
+scale = Vector2(1.06064, 2.18306)
+shape = SubResource("RectangleShape2D_psfyo")
+
+[node name="repeatedWalls2" type="Node2D" parent="RightWall"]
+position = Vector2(-333, -576)
+rotation = 3.14159
+
+[node name="Sprite2D" type="Sprite2D" parent="RightWall/repeatedWalls2"]
+position = Vector2(-776, -759)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="RightWall/repeatedWalls2"]
+position = Vector2(-775, -600)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="RightWall/repeatedWalls2"]
+position = Vector2(-775, -430)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="Sprite2D4" type="Sprite2D" parent="RightWall/repeatedWalls2"]
+position = Vector2(-774, -309)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="Sprite2D5" type="Sprite2D" parent="RightWall/repeatedWalls2"]
+position = Vector2(-775, -136)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="Sprite2D6" type="Sprite2D" parent="RightWall/repeatedWalls2"]
+position = Vector2(-774, 15)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="Sprite2D7" type="Sprite2D" parent="RightWall/repeatedWalls2"]
+position = Vector2(-774, 185)
+rotation = -3.14159
+scale = Vector2(0.192624, 0.220504)
+texture = ExtResource("13_bv5hq")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -716.0
+offset_top = -846.0
+offset_right = -306.0
+offset_bottom = -758.0
+scale = Vector2(0.701841, 0.701841)
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_tut2x")
+horizontal_alignment = 1
 
 [connection signal="popped" from="Bubble" to="." method="_on_bubble_popped"]
 [connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_texture_button_pressed"]

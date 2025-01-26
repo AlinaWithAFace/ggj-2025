@@ -7,6 +7,7 @@ class_name Bubble
 @export var bubble_scale : Vector2 = Vector2(0,0)
 
 @export var bubble_body : Node2D = null
+@export var bubble_scale_root : Node2D = null;
 @export var bubble_shape : CollisionShape2D = null;
 
 @export var SCALE_SPEED : float = 8;
@@ -65,13 +66,18 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("move_left"):
 		wave(Vector2(-2000, 0))
 		
+	if Input.is_action_just_pressed("move_up"):
+		wave(Vector2(0, 2000))
+	if Input.is_action_just_pressed("move_down"):
+		wave(Vector2(0, -2000))
+		
 	time+=delta* 2;
 	var sine_val:Vector2 = Vector2(sin(time), 0)
 	
 	curr_scale = lerp(curr_scale, target_scale, delta * SCALE_SPEED)
 	
-	scale = Vector2(curr_scale, curr_scale)
-	
+	bubble_scale_root.scale = Vector2(curr_scale, curr_scale)
+	((bubble_shape.shape) as CircleShape2D).radius = curr_scale * 100
 	#var collision = move_and_collide(sine_val)
 	#if collision:
 	#	pop()
@@ -103,7 +109,9 @@ func _stop_deflate_bubble():
 #	audio.free()
 	pass
 	
-func pop():
+func pop(collided: Obstacle):
+	return
+	
 	started = false
 	popped.emit()
 	
