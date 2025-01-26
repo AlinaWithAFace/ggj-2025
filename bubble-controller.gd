@@ -12,6 +12,9 @@ class_name Bubble
 
 @export var SCALE_SPEED : float = 8;
 
+@export var MAGNITUDE = 1
+
+
 
 
 signal popped
@@ -25,6 +28,11 @@ var curr_scale:float = 1
 var target_scale:float = 1
 var started: bool = false
 var start_pos: Vector2 = Vector2.ZERO
+
+
+var touch_points
+var velocity: Vector2
+var touching 
 
 
 func reset():
@@ -121,5 +129,27 @@ func wave(direction : Vector2):
 	pass
 	
 	
+func _input(event):
+	if event is InputEventScreenTouch:
+		handle_touch(event)
+	elif event is InputEventScreenDrag:
+		handle_drag(event)
+		
+		
+	
+func handle_touch(_event : InputEventScreenTouch) -> void:
+	if _event.pressed:
+		touching = true
+	else:
+		touching = false
+		wave(velocity*MAGNITUDE)
+		velocity*=0
+	pass
+	
+func handle_drag(_event : InputEventScreenDrag):
+	if(touching):
+		velocity = _event.get_screen_velocity()
+		print(velocity)
+	pass
 	
 	
