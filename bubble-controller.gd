@@ -185,7 +185,7 @@ func add_plankton(p:Plankton):
 	target_scale *= 1.1
 	
 func kill_plankton():
-	var to_kill = max(1,floor(score *.3))
+	var to_kill = max(1,floor(float(score) *.3))
 	score -= to_kill
 	damaged.play()
 	for i in range(to_kill):
