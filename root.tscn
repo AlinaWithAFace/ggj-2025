@@ -1,18 +1,20 @@
-[gd_scene load_steps=19 format=3 uid="uid://ct6yk08ypgaf2"]
+[gd_scene load_steps=21 format=3 uid="uid://ct6yk08ypgaf2"]
 
 [ext_resource type="Script" path="res://Root.gd" id="1_mqs1h"]
 [ext_resource type="Texture2D" uid="uid://dbis3tuj2nb0e" path="res://elizabeth/Gradient1.png" id="2_nlul5"]
 [ext_resource type="Script" path="res://Backdrop/Backdrop.gd" id="3_rdumw"]
 [ext_resource type="PackedScene" uid="uid://cdvoaeft5jym6" path="res://bubble/bubble-node-2d.tscn" id="4_q86o0"]
+[ext_resource type="Script" path="res://parallax.gd" id="5_0068x"]
+[ext_resource type="Texture2D" uid="uid://fiq1hnpjwbne" path="res://ed/parallaxbg.png" id="5_82l8v"]
 [ext_resource type="PackedScene" uid="uid://bcffng15h8toq" path="res://obstacles/obstacle_manager.tscn" id="6_q0rfm"]
-[ext_resource type="PackedScene" uid="uid://cfiy5twoehxia" path="res://plankton_manager.tscn" id="6_y6b11"]
+[ext_resource type="PackedScene" uid="uid://k63gvdyno5cg" path="res://plankton_manager.tscn" id="6_y6b11"]
 [ext_resource type="Texture2D" uid="uid://wxup51e2bvpe" path="res://Backdrop/blur.png" id="7_8fm6k"]
 [ext_resource type="Texture2D" uid="uid://dey5ip62xdueu" path="res://elizabeth/Bubble1v1-1.png" id="8_wkr4s"]
 [ext_resource type="Texture2D" uid="uid://bul3ovtwowlop" path="res://elizabeth/Bubble2v1-1.png" id="9_2ae2f"]
 [ext_resource type="FontFile" uid="uid://dhwnbdbovt8wu" path="res://font/04B_30__.TTF" id="9_l66tg"]
-[ext_resource type="LabelSettings" uid="uid://djwfsgmakgith" path="res://label-settings.tres" id="9_qk2ah"]
+[ext_resource type="LabelSettings" path="res://label-settings.tres" id="9_qk2ah"]
 [ext_resource type="AudioStream" uid="uid://ce5d4ttk65wyd" path="res://audio/mx_water_hell_loopable.ogg" id="11_q28vb"]
-[ext_resource type="PhysicsMaterial" uid="uid://3oyltkqr2hdo" path="res://BouncyWalls.tres" id="12_5m8k6"]
+[ext_resource type="PhysicsMaterial" path="res://BouncyWalls.tres" id="12_5m8k6"]
 [ext_resource type="Texture2D" uid="uid://bcs6rmk6am0yw" path="res://ed/algae_wall.webp" id="13_bv5hq"]
 [ext_resource type="PackedScene" uid="uid://slgmlh6yjht8" path="res://water_shader.tscn" id="15_nekt4"]
 
@@ -49,6 +51,20 @@ region_enabled = true
 region_rect = Rect2(4.718, 2048, 66.031, 101.462)
 script = ExtResource("3_rdumw")
 
+[node name="parallax" type="Node2D" parent="." node_paths=PackedStringArray("p1", "p2")]
+position = Vector2(-562, -1382)
+script = ExtResource("5_0068x")
+p1 = NodePath("Parallaxbg")
+p2 = NodePath("Parallaxbg2")
+speed = 10
+
+[node name="Parallaxbg" type="Sprite2D" parent="parallax"]
+texture = ExtResource("5_82l8v")
+
+[node name="Parallaxbg2" type="Sprite2D" parent="parallax"]
+position = Vector2(-6, -2923)
+texture = ExtResource("5_82l8v")
+
 [node name="Bubble" parent="." node_paths=PackedStringArray("obstacle_manager", "plankton_manager") instance=ExtResource("4_q86o0")]
 position = Vector2(-634, -380)
 max_scale = 1.0
@@ -67,7 +83,7 @@ speed = 100
 [node name="MainMenu" type="Node2D" parent="."]
 
 [node name="Blur" type="Sprite2D" parent="MainMenu"]
-position = Vector2(-541, -468)
+position = Vector2(-506, -570)
 scale = Vector2(65.6046, 8.0724)
 texture = ExtResource("7_8fm6k")
 
