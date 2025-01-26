@@ -24,6 +24,7 @@ class_name Bubble
 @export var obstacle_manager : ObstacleManager
 @export var plankton_manager: ObstacleManager
 @export var score_speed_multiplier = 1
+@export var plankton_parent: Node2D = null
 
 var score = 0
 
@@ -80,9 +81,10 @@ var deflate_timer:float = 0
 func _process(delta: float) -> void:
 	if(!started):
 		return
-		
-	obstacle_manager.speed = 50+score_speed_multiplier*score
-	plankton_manager.speed = 50+score_speed_multiplier*score
+	
+	var spd = 50 + max(0,score_speed_multiplier*score)
+	obstacle_manager.speed = spd
+	plankton_manager.speed = spd
 	
 	if Input.is_action_just_pressed("inflate_bubble"):
 		_start_inflate_bubble()
@@ -176,7 +178,7 @@ func add_plankton(p:Plankton):
 	pickup.play()
 	
 	p.get_parent().remove_child(p)
-	add_child(p)
+	plankton_parent.add_child(p)
 	p.position = Vector2(randf()*place_range-(place_range/2), randf()*place_range - (place_range/2))
 	p.scale = Vector2(place_scale, place_scale)
 	p.PickedUp()
@@ -203,7 +205,7 @@ func kill_plankton(obstacle: Obstacle):
 			var p = planktonians[0]
 			var pos = p.global_position
 			planktonians.remove_at(0)
-			remove_child(p)
+			plankton_parent.remove_child(p)
 			get_tree().root.add_child(p)
 			p.global_position = pos
 			p.falling = true
