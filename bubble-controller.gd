@@ -18,6 +18,10 @@ class_name Bubble
 @export var MAGNITUDE = 1
 @export var collider_scalar = 140
 @export var max_scale = 1.2
+
+@export var obstacle_manager : ObstacleManager
+@export var plankton_manager: ObstacleManager
+@export var score_speed_multiplier = 1
 var score = 0
 
 signal popped
@@ -63,6 +67,9 @@ var deflate_timer:float = 0
 func _process(delta: float) -> void:
 	if(!started):
 		return
+		
+	obstacle_manager.speed = 50+score_speed_multiplier*score
+	plankton_manager.speed = 50+score_speed_multiplier*score
 	
 	if Input.is_action_just_pressed("inflate_bubble"):
 		_start_inflate_bubble()
