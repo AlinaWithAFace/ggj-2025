@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://bubble-controller.gd" id="1_xkymh"]
 [ext_resource type="AudioStream" uid="uid://cxvs2y0s8ooi5" path="res://bubble/240263__kgatto__air-hiss.wav" id="2_6eups"]
-[ext_resource type="Texture2D" uid="uid://dlqkoesng0jt" path="res://elizabeth/Bubble3V1-1.png" id="3_i642w"]
+[ext_resource type="Texture2D" uid="uid://bd20p53pwk4ws" path="res://bubble.png" id="3_i4iuf"]
 
 [sub_resource type="Animation" id="Animation_cvwnq"]
 length = 0.001
@@ -71,5 +71,6 @@ shape = SubResource("CircleShape2D_y00x3")
 
 [node name="BubbleBody" type="Sprite2D" parent="ScaleNode"]
 material = SubResource("CanvasItemMaterial_vfkc3")
-scale = Vector2(0.097, 0.097)
-texture = ExtResource("3_i642w")
+position = Vector2(-2, -6)
+scale = Vector2(0.458354, 0.448169)
+texture = ExtResource("3_i4iuf")
