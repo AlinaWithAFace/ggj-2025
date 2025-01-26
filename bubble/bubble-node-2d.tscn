@@ -43,7 +43,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y00x3"]
-radius = 400.0
+radius = 100.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vfkc3"]
 
@@ -68,7 +68,6 @@ autoplay = "idle_float"
 shape = SubResource("CircleShape2D_y00x3")
 
 [node name="ScaleNode" type="Node2D" parent="."]
-scale = Vector2(4, 4)
 
 [node name="BubbleBody" type="Sprite2D" parent="ScaleNode"]
 material = SubResource("CanvasItemMaterial_vfkc3")
