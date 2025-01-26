@@ -4,6 +4,8 @@ class_name Bubble
 
 @export var audio: AudioStream = null
 
+@export var audio_stream_player : AudioStreamPlayer2D = null
+
 @export var bubble_scale : Vector2 = Vector2(0,0)
 
 @export var bubble_body : Node2D = null
@@ -99,6 +101,7 @@ func _start_inflate_bubble():
 	print("inflate bubble")
 	target_scale *= 1.3;
 	audio.instantiate_playback()
+	audio_stream_player.play()
 
 	bubble_scale = bubble_body.scale
 	pass
@@ -120,7 +123,8 @@ func _stop_deflate_bubble():
 	pass
 	
 func pop(collided: Obstacle):
-	
+	audio_stream_player.stream = audio
+	audio_stream_player.play()
 	started = false
 	popped.emit()
 	
