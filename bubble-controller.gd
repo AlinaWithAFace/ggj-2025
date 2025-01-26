@@ -184,14 +184,22 @@ func add_plankton(p:Plankton):
 	planktonians.append(p)
 	target_scale *= 1.1
 	
-func kill_plankton():
-	var to_kill = max(1,floor(float(score) *.3))
+
+func kill_plankton(obstacle: Obstacle):
+	var to_kill = max(1,floor(score *.3))
+	match ((obstacle as Obstacle).obstacle_type):
+		Obstacle.ObstacleClass.LIGHTDAMAGE:
+			to_kill = 1
+		Obstacle.ObstacleClass.HEAVYDAMAGE:
+			to_kill = 3
+		Obstacle.ObstacleClass.DEATHDAMAGE:
+			to_kill = 5
 	score -= to_kill
 	damaged.play()
 	for i in range(to_kill):
 		if(len(planktonians) > 0):
 			target_scale *= .9
-	
+
 			var p = planktonians[0]
 			var pos = p.global_position
 			planktonians.remove_at(0)
@@ -199,7 +207,8 @@ func kill_plankton():
 			get_tree().root.add_child(p)
 			p.global_position = pos
 			p.falling = true
-			
+
+		
 
 func handle_touch(_event : InputEventScreenTouch) -> void:
 	if _event.pressed:

@@ -105,7 +105,12 @@ func test_collision(bubble: Bubble, bubble_size:float):
 					active_obstacles.remove_at(active_obstacles.find(obstacle))
 					remove_child(obstacle)
 					obstacle.queue_free()
-					bubble.kill_plankton()	
-			
-			
-		
+					bubble.kill_plankton(obstacle)
+#					match ((obstacle as Obstacle).obstacle_type):
+#						Obstacle.ObstacleClass.DEATHDAMAGE:
+#							bubble.pop()
+#						_:
+							
+
+
+
