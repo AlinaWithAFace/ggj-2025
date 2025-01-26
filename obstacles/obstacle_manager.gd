@@ -99,8 +99,6 @@ func test_collision(bubble: Bubble, bubble_size:float):
 			if(plankton):
 				bubble.add_plankton(obstacle as Plankton)
 				active_obstacles.remove_at(active_obstacles.find(obstacle))
-				remove_child(obstacle)
-				obstacle.queue_free()
 			else:
 				active_obstacles.remove_at(active_obstacles.find(obstacle))
 				remove_child(obstacle)
