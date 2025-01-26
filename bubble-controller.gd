@@ -21,6 +21,10 @@ class_name Bubble
 
 @export var place_range: float = 40
 @export var place_scale: float = .5
+@export var obstacle_manager : ObstacleManager
+@export var plankton_manager: ObstacleManager
+@export var score_speed_multiplier = 1
+
 var score = 0
 
 signal popped
@@ -65,6 +69,7 @@ func _ready() -> void:
 	start_pos = position
 	pass # Replace with function body.
 
+var health : int = 3
 
 var time: float = 0
 
@@ -75,6 +80,9 @@ var deflate_timer:float = 0
 func _process(delta: float) -> void:
 	if(!started):
 		return
+		
+	obstacle_manager.speed = 50+score_speed_multiplier*score
+	plankton_manager.speed = 50+score_speed_multiplier*score
 	
 	if Input.is_action_just_pressed("inflate_bubble"):
 		_start_inflate_bubble()
@@ -147,6 +155,9 @@ func pop():
 	started = false
 	popped.emit()
 	
+func damage():
+	pass
+
 func wave(direction : Vector2):
 	apply_force(direction)
 	

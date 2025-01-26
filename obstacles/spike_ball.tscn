@@ -1,34 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://db3v7nkf80qxn"]
+[gd_scene load_steps=6 format=3 uid="uid://db3v7nkf80qxn"]
 
 [ext_resource type="Script" path="res://obstacles/obstacle.gd" id="1_re7f3"]
 [ext_resource type="Texture2D" uid="uid://5fnkrcuaylnn" path="res://obstacles/obstacle_sprites/spikeball.png" id="2_bwfol"]
 [ext_resource type="Texture2D" uid="uid://2utvj60pxojf" path="res://obstacles/obstacle_sprites/spikeball-red.png" id="3_k4jhs"]
+[ext_resource type="Texture2D" uid="uid://bnssve3tn83xk" path="res://obstacles/obstacle_sprites/spikeball-orange.png" id="4_p4kk8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80vsu"]
 radius = 43.14
 
-[node name="SpikeBall" type="Node2D" node_paths=PackedStringArray("sprite")]
+[node name="SpikeBall" type="Node2D" node_paths=PackedStringArray("sprite", "light_damage_node", "heavy_damage_node", "death_damage_node")]
 script = ExtResource("1_re7f3")
-sprite = NodePath("Area2D/SpikeBall3")
+sprite = NodePath("SpikeballLightDamage/SpikeBall3")
+light_damage_node = NodePath("SpikeballLightDamage")
+heavy_damage_node = NodePath("SpikeballHeavyDamage")
+death_damage_node = NodePath("SpikeballDeathDamage")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="SpikeballLightDamage" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeballLightDamage"]
 shape = SubResource("CircleShape2D_80vsu")
 
-[node name="SpikeBall3" type="Sprite2D" parent="Area2D"]
+[node name="SpikeBall3" type="Sprite2D" parent="SpikeballLightDamage"]
 scale = Vector2(1.37, 1.37)
 texture = ExtResource("2_bwfol")
 
-[node name="Area2D2" type="Area2D" parent="."]
+[node name="SpikeballDeathDamage" type="Area2D" parent="."]
 visible = false
 
-[node name="SpikeBall3" type="Sprite2D" parent="Area2D2"]
+[node name="SpikeBall3" type="Sprite2D" parent="SpikeballDeathDamage"]
 scale = Vector2(1.37, 1.37)
 texture = ExtResource("3_k4jhs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeballDeathDamage"]
 shape = SubResource("CircleShape2D_80vsu")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_body_entered"]
+[node name="SpikeballHeavyDamage" type="Area2D" parent="."]
+visible = false
+
+[node name="SpikeBall3" type="Sprite2D" parent="SpikeballHeavyDamage"]
+scale = Vector2(1.37, 1.37)
+texture = ExtResource("4_p4kk8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeballHeavyDamage"]
+shape = SubResource("CircleShape2D_80vsu")
+
+[connection signal="body_entered" from="SpikeballLightDamage" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="SpikeballDeathDamage" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="SpikeballHeavyDamage" to="." method="_on_area_2d_body_entered"]
