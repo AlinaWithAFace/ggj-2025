@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdvoaeft5jym6"]
+[gd_scene load_steps=10 format=3 uid="uid://cdvoaeft5jym6"]
 
 [ext_resource type="Script" path="res://bubble-controller.gd" id="1_xkymh"]
-[ext_resource type="AudioStream" uid="uid://cxvs2y0s8ooi5" path="res://bubble/240263__kgatto__air-hiss.wav" id="2_6eups"]
-[ext_resource type="Texture2D" uid="uid://dlqkoesng0jt" path="res://elizabeth/Bubble3V1-1.png" id="3_i642w"]
+[ext_resource type="AudioStream" uid="uid://dky1rlnq31ffg" path="res://audio/bubblepop.ogg" id="2_1wj3m"]
+[ext_resource type="Texture2D" uid="uid://bd20p53pwk4ws" path="res://bubble.png" id="3_i4iuf"]
 
 [sub_resource type="Animation" id="Animation_cvwnq"]
 length = 0.001
@@ -47,11 +47,14 @@ radius = 100.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vfkc3"]
 
-[node name="Bubble" type="RigidBody2D" node_paths=PackedStringArray("bubble_body", "bubble_scale_root", "bubble_shape")]
+[sub_resource type="AudioStream" id="AudioStream_6bkxi"]
+
+[node name="Bubble" type="RigidBody2D" node_paths=PackedStringArray("audio_stream_player", "bubble_body", "bubble_scale_root", "bubble_shape")]
 modulate = Color(1, 1, 1, 0.615686)
 gravity_scale = 0.0
 script = ExtResource("1_xkymh")
-audio = ExtResource("2_6eups")
+audio = ExtResource("2_1wj3m")
+audio_stream_player = NodePath("AudioStreamPlayer2D")
 bubble_body = NodePath("ScaleNode/BubbleBody")
 bubble_scale_root = NodePath("ScaleNode")
 bubble_shape = NodePath("CollisionShape2D")
@@ -71,5 +74,9 @@ shape = SubResource("CircleShape2D_y00x3")
 
 [node name="BubbleBody" type="Sprite2D" parent="ScaleNode"]
 material = SubResource("CanvasItemMaterial_vfkc3")
-scale = Vector2(0.097, 0.097)
-texture = ExtResource("3_i642w")
+position = Vector2(-2, -6)
+scale = Vector2(0.458354, 0.448169)
+texture = ExtResource("3_i4iuf")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStream_6bkxi")
