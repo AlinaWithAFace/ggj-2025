@@ -11,7 +11,7 @@ var active_obstacles
 @export var obstacle_radius: float = 30
 @export var plankton_radius: float = 50
 @export var speed = 0
-@export var obj = "res://obstacles/spike_ball.tscn"
+@export var obj = "res://obstacles/obstacle.tscn"
 var packed_obstacle
 var rng = RandomNumberGenerator.new()
 var temp
@@ -102,10 +102,12 @@ func test_collision(bubble: Bubble, bubble_size:float):
 				remove_child(obstacle)
 				obstacle.queue_free()
 			else:
-				active_obstacles.remove_at(active_obstacles.find(obstacle))
-				remove_child(obstacle)
-				obstacle.queue_free()
-				bubble.kill_plankton()	
+				if(obstacle is Obstacle):
+					print("Collided with %s", (obstacle as Obstacle).obstacle_type)
+					active_obstacles.remove_at(active_obstacles.find(obstacle))
+					remove_child(obstacle)
+					obstacle.queue_free()
+					bubble.kill_plankton()	
 			
 			
 		

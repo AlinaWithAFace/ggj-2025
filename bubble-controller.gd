@@ -53,6 +53,7 @@ func _ready() -> void:
 	start_pos = position
 	pass # Replace with function body.
 
+var health : int = 3
 
 var time: float = 0
 
@@ -133,6 +134,9 @@ func pop():
 	started = false
 	popped.emit()
 	
+func damage():
+	pass
+
 func wave(direction : Vector2):
 	apply_force(direction)
 	
