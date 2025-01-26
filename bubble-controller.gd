@@ -84,6 +84,8 @@ func _process(delta: float) -> void:
 	
 	curr_scale = lerp(curr_scale, target_scale, delta * SCALE_SPEED)
 	
+	scale = Vector2(curr_scale, curr_scale)
+	
 	bubble_scale_root.scale = Vector2(curr_scale, curr_scale)
 	((bubble_shape.shape) as CircleShape2D).radius = curr_scale * 100
 	#var collision = move_and_collide(sine_val)
