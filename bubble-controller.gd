@@ -31,7 +31,7 @@ var start_pos: Vector2 = Vector2.ZERO
 
 
 var touch_points
-var velocity: Vector2
+var velocity: Vector2 = Vector2.ZERO
 var touching 
 
 
@@ -75,9 +75,9 @@ func _process(delta: float) -> void:
 		wave(Vector2(-2000, 0))
 		
 	if Input.is_action_just_pressed("move_up"):
-		wave(Vector2(0, 2000))
-	if Input.is_action_just_pressed("move_down"):
 		wave(Vector2(0, -2000))
+	if Input.is_action_just_pressed("move_down"):
+		wave(Vector2(0, 2000))
 		
 	time+=delta* 2;
 	var sine_val:Vector2 = Vector2(sin(time), 0)
@@ -126,7 +126,6 @@ func pop(collided: Obstacle):
 	
 func wave(direction : Vector2):
 	apply_force(direction)
-	print("hello")
 	pass
 	
 	

@@ -55,7 +55,7 @@ func _on_bubble_popped() -> void:
 	if(started):
 		speed = 0
 		accel = 0
-		
+		bubble.velocity = Vector2.ZERO
 		bubble.hide()
 		main_menu_node.show()
 		started = false
