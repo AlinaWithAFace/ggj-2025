@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdvoaeft5jym6"]
+[gd_scene load_steps=10 format=3 uid="uid://cdvoaeft5jym6"]
 
 [ext_resource type="Script" path="res://bubble-controller.gd" id="1_xkymh"]
 [ext_resource type="AudioStream" uid="uid://dky1rlnq31ffg" path="res://audio/bubblepop.ogg" id="2_1wj3m"]
@@ -49,14 +49,11 @@ radius = 100.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r5qdg"]
 shader = ExtResource("3_gfcgx")
 
-[sub_resource type="AudioStream" id="AudioStream_6bkxi"]
-
 [node name="Bubble" type="RigidBody2D" node_paths=PackedStringArray("audio_stream_player", "bubble_body", "bubble_scale_root", "bubble_shape")]
 modulate = Color(1, 1, 1, 0.615686)
 gravity_scale = 0.0
 script = ExtResource("1_xkymh")
-audio = ExtResource("2_1wj3m")
-audio_stream_player = NodePath("AudioStreamPlayer2D")
+audio_stream_player = NodePath("bubblePop")
 bubble_body = NodePath("ScaleNode/BubbleBody")
 bubble_scale_root = NodePath("ScaleNode")
 bubble_shape = NodePath("CollisionShape2D")
@@ -81,4 +78,7 @@ scale = Vector2(0.458354, 0.448169)
 texture = ExtResource("3_i4iuf")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStream_6bkxi")
+stream = ExtResource("2_1wj3m")
+
+[node name="bubblePop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_1wj3m")

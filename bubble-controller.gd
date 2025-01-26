@@ -127,7 +127,6 @@ func _stop_deflate_bubble():
 	pass
 	
 func pop():	
-	audio_stream_player.stream = audio
 	audio_stream_player.play()
 	started = false
 	popped.emit()
@@ -152,6 +151,7 @@ func add_plankton(p:Plankton):
 	
 func kill_plankton():
 	score -= 1
+	audio_stream_player.play()
 	target_scale *= .9
 
 func handle_touch(_event : InputEventScreenTouch) -> void:
