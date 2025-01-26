@@ -7,6 +7,7 @@ class_name ObstacleManager
 @export var spawn_height = 0
 var timer: Timer
 var active_obstacles
+@export var obstacle_radius: float = 0
 @export var speed = 0
 var packed_obstacle = preload("res://obstacles/spike_ball.tscn")
 var rng = RandomNumberGenerator.new()
@@ -64,3 +65,18 @@ func place_obstacle(ob):
 	ob.position.x = rng.randf_range(-width/2, width/2)
 	ob.position.y = spawn_height
 	pass
+
+
+
+func test_collision(bubble_pos: Vector2, bubble_size:float):
+	for obstacle in active_obstacles:
+		var radSum: float = bubble_size + obstacle_radius
+		var dist: float = (bubble_pos - obstacle.global_position).length()
+		
+		print("Testing %s vs %s"%[radSum, dist])
+		if(radSum > dist):
+			return true
+			pass
+			
+	return false			
+		

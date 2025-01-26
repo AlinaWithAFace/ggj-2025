@@ -119,7 +119,7 @@ func _stop_deflate_bubble():
 #	audio.free()
 	pass
 	
-func pop(collided: Obstacle):
+func pop():
 	
 	started = false
 	popped.emit()

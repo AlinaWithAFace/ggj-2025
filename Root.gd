@@ -48,8 +48,13 @@ func _process(delta: float) -> void:
 		pos.y = spriteY
 		
 		backdrop.region_rect.position = pos;
+		
+		if(obstacle_manager.test_collision(bubble.position, bubble.curr_scale * 100)):
+			bubble.pop()
+		
 		score_label.text = "Score: %s" % floor(distance)
-
+		print(bubble.linear_velocity)
+	
 
 func _on_bubble_popped() -> void:
 	if(started):
@@ -63,11 +68,7 @@ func _on_bubble_popped() -> void:
 		started = false
 		obstacle_manager.Cleanup()
 		active_time = 0
-		
-		
 	
-	pass # Replace with function body.
-
 func _on_texture_button_pressed() -> void:
 	started = true
 	main_menu_node.hide()

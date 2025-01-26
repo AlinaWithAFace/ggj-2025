@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_rigid_body_2d_body_entered(body: Node) -> void:
+	return
 	print("POPPPING")
 	if(body.has_method("pop")):
 		body.pop()
@@ -21,6 +22,7 @@ func _on_rigid_body_2d_body_entered(body: Node) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	return
 	if(body.has_method("pop")):
 		body.pop(self)
 		#sprite.modulate = Color(1,0,0,1)

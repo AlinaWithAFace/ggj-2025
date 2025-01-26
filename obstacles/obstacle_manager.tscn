@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://obstacles/obstacle_manager.gd" id="1_jwxed"]
 
 [node name="ObstacleManager" type="Node2D"]
-position = Vector2(583, -42)
 script = ExtResource("1_jwxed")
 width = 500
+max_obstacles = 1
 max_distance = 1000
+obstacle_radius = 38.0
 speed = 100
 
 [node name="Timer" type="Timer" parent="."]
