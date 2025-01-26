@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dey5ip62xdueu" path="res://elizabeth/Bubble1v1-1.png" id="8_wkr4s"]
 [ext_resource type="Texture2D" uid="uid://bul3ovtwowlop" path="res://elizabeth/Bubble2v1-1.png" id="9_2ae2f"]
 [ext_resource type="FontFile" uid="uid://dhwnbdbovt8wu" path="res://font/04B_30__.TTF" id="9_l66tg"]
-[ext_resource type="LabelSettings" path="res://label-settings.tres" id="9_qk2ah"]
+[ext_resource type="LabelSettings" uid="uid://djwfsgmakgith" path="res://label-settings.tres" id="9_qk2ah"]
 [ext_resource type="AudioStream" uid="uid://ce5d4ttk65wyd" path="res://audio/mx_water_hell_loopable.ogg" id="11_q28vb"]
 [ext_resource type="PhysicsMaterial" path="res://BouncyWalls.tres" id="12_5m8k6"]
 [ext_resource type="Texture2D" uid="uid://bcs6rmk6am0yw" path="res://ed/algae_wall.webp" id="13_bv5hq"]
