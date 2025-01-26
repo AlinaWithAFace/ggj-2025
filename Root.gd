@@ -12,6 +12,7 @@ class_name Root
 @export var score_label: Label = null
 @export var speed_scale: float = 5
 @export var obstacle_manager: ObstacleManager = null
+@export var plankton_manager: ObstacleManager = null
 var started = false
 
 var active_time : float = 0
@@ -37,6 +38,7 @@ func _process(delta: float) -> void:
 		active_time+= delta
 		if(active_time > 3):
 			obstacle_manager.started = true
+			plankton_manager.started = true
 		var spriteY = 1000 - distance;
 		var sz = bubble.size;
 		sz +=1
@@ -62,6 +64,7 @@ func _on_bubble_popped() -> void:
 		main_menu_node.show()
 		started = false
 		obstacle_manager.Cleanup()
+		plankton_manager.Cleanup()
 		active_time = 0
 		
 		
@@ -76,4 +79,5 @@ func _on_texture_button_pressed() -> void:
 	distance = 0
 	active_time = 0
 	obstacle_manager.Start()
+	plankton_manager.Start()
 	pass # Replace with function body.

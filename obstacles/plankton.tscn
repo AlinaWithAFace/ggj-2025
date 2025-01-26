@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://vr5xyofxvoh8"]
+
+[ext_resource type="Script" path="res://obstacles/plankton.gd" id="1_dh6tr"]
+[ext_resource type="Texture2D" uid="uid://f26t7f1jnwm1" path="res://ed/plankton_dress.webp" id="2_2iid4"]
+[ext_resource type="Texture2D" uid="uid://fkav626dh0dj" path="res://ed/plankton_drip.webp" id="3_q7ccp"]
+[ext_resource type="Texture2D" uid="uid://d2s6sw8m5cts4" path="res://ed/plankton_fuzzy (1).webp" id="4_xna8u"]
+[ext_resource type="Texture2D" uid="uid://car38prm2x0ye" path="res://ed/plankton_fuzzy.webp" id="5_cghuh"]
+[ext_resource type="Texture2D" uid="uid://bid1f6tc5kidm" path="res://ed/tardigrade_hat.webp" id="6_gdkow"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_80vsu"]
+radius = 44.0454
+
+[node name="plankton" type="Node2D"]
+script = ExtResource("1_dh6tr")
+array = [NodePath("PlanktonDress"), NodePath("PlanktonDrip"), NodePath("PlanktonFuzzy(1)"), NodePath("PlanktonFuzzy"), NodePath("TardigradeHat")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-9, -5)
+shape = SubResource("CircleShape2D_80vsu")
+
+[node name="PlanktonDress" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-5, -3)
+texture = ExtResource("2_2iid4")
+
+[node name="PlanktonDrip" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-19, -11)
+texture = ExtResource("3_q7ccp")
+
+[node name="PlanktonFuzzy(1)" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-25, -14)
+texture = ExtResource("4_xna8u")
+
+[node name="PlanktonFuzzy" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-20, -15)
+texture = ExtResource("5_cghuh")
+
+[node name="TardigradeHat" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-5, -4)
+scale = Vector2(0.62766, 0.594595)
+texture = ExtResource("6_gdkow")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
