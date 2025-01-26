@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://0vkj6k1gcdbd"]
+[gd_scene load_steps=2 format=3 uid="uid://bcffng15h8toq"]
 
 [ext_resource type="Script" path="res://obstacles/obstacle_manager.gd" id="1_jwxed"]
 
@@ -11,6 +11,5 @@ speed = 100
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
-autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

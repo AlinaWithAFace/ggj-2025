@@ -75,4 +75,5 @@ func _on_texture_button_pressed() -> void:
 	bubble.reset()
 	distance = 0
 	active_time = 0
+	obstacle_manager.Start()
 	pass # Replace with function body.

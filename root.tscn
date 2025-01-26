@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dbis3tuj2nb0e" path="res://elizabeth/Gradient1.png" id="2_nlul5"]
 [ext_resource type="Script" path="res://Backdrop/Backdrop.gd" id="3_rdumw"]
 [ext_resource type="PackedScene" uid="uid://cdvoaeft5jym6" path="res://bubble/bubble-node-2d.tscn" id="4_q86o0"]
-[ext_resource type="PackedScene" path="res://obstacles/obstacle_manager.tscn" id="6_q0rfm"]
+[ext_resource type="PackedScene" uid="uid://bcffng15h8toq" path="res://obstacles/obstacle_manager.tscn" id="6_q0rfm"]
 [ext_resource type="Texture2D" uid="uid://wxup51e2bvpe" path="res://Backdrop/blur.png" id="7_8fm6k"]
 [ext_resource type="Texture2D" uid="uid://dey5ip62xdueu" path="res://elizabeth/Bubble1v1-1.png" id="8_wkr4s"]
 [ext_resource type="Texture2D" uid="uid://bul3ovtwowlop" path="res://elizabeth/Bubble2v1-1.png" id="9_2ae2f"]

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://5fnkrcuaylnn" path="res://obstacles/obstacle_sprites/spikeball.png" id="2_bwfol"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80vsu"]
+radius = 43.14
 
 [node name="SpikeBall" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_re7f3")
@@ -14,7 +15,6 @@ scale = Vector2(1.37, 1.37)
 texture = ExtResource("2_bwfol")
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_80vsu")

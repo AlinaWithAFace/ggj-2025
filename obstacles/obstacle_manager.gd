@@ -5,7 +5,7 @@ class_name ObstacleManager
 @export var max_obstacles = 10
 @export var max_distance = 100
 @export var spawn_height = 0
-var timer
+var timer: Timer
 var active_obstacles
 @export var speed = 0
 var packed_obstacle = preload("res://obstacles/spike_ball.tscn")
@@ -19,8 +19,11 @@ func _ready() -> void:
 	timer = $Timer
 	active_obstacles = Array()
 	pass # Replace with function body.
-
-
+	
+	
+func Start():
+	timer.start()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(!started):
@@ -41,6 +44,8 @@ func Cleanup():
 		node.queue_free()
 		pass
 	active_obstacles.clear()
+	timer.stop()
+	
 
 func _on_timer_timeout() -> void:
 	if(active_obstacles.size() < max_obstacles):
